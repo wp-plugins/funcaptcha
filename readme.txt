@@ -1,4 +1,4 @@
-=== FunCaptcha - Free CAPTCHA Alternative ===
+=== FunCaptcha - Fun Interactive Games ===
 Contributors: swipeads
 Tags: anti-spam, spam, bot, comments, funcaptcha, swipeads, recaptcha, captcha, verification, bots, spambots, security, login, registration, iphone, android, html5, advertising, Akismet, blackberry, buddypress, contact form 7, iPad, monetize, plugin, security, Security captcha, solve media, spam, type-in, Windows Phone 7, wpms, bot, bots, capcha, catcha, cf7, comment, comments, html5, human, robot
 Requires at least: 2.8.0
