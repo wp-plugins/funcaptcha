@@ -1,6 +1,6 @@
 === FunCaptcha - game CAPTCHA ===
 Contributors: swipeads
-Tags: fun, captcha, anti-spam, spam, bot, comments, funcaptcha, swipeads, recaptcha, captcha, verification, bots, spambots, security, login, registration, iphone, android, html5, advertising, Akismet, blackberry, buddypress, contact form 7, iPad, monetize, plugin, security, Security captcha, spam, type-in, Windows Phone 7, wpms, bot, bots, capcha, catcha, cf7, comment, comments, html5, human, robot
+Tags: fun, captcha, anti-spam, spam, bot, comments, funcaptcha, swipeads, recaptcha, captcha, verification, bots, spambots, security, login, registration, iphone, android, html5, advertising, Akismet, blackberry, contact form 7, iPad, monetize, plugin, security, Security captcha, spam, type-in, Windows Phone 7, wpms, bot, bots, capcha, catcha, cf7, comment, comments, html5, human, robot
 Requires at least: 2.8.0
 Tested up to: 3.5.1
 Stable tag: 0.1.0
@@ -13,7 +13,7 @@ Spammers abuse your site, but users hate typing out twisty letters or ad phrases
 
 Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge.
 
-The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7. You can keep your anti-spam solutions such as Kismet, though you won't need to check those filters as often.
+The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often.
 
 If you get in on the ground floor now, you can be first in line to start earning money with upcoming FunCaptchas that integrate advertising. They will require no typing or extra time, and remain as secure as ever.
 
