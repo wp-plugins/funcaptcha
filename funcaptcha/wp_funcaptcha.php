@@ -1,0 +1,594 @@
+<?php
+/**
+ * @package FunCaptcha
+ * @version 0.0.1
+ */
+/*
+Plugin Name: FunCaptcha
+Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
+Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
+Author: SwipeAds
+Author URI: https://swipeads.co/
+Version: 0.0.1
+*/
+
+
+define('FUNCAPTCHA_VERSION', '0.0.1');
+define('PLUGIN_BASENAME', plugin_basename(__FILE__));
+define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
+define('PLUGIN_PATH', plugin_dir_path(__FILE__));
+require_once(PLUGIN_PATH . "funcaptcha.php");
+require_once(PLUGIN_PATH . "addons/wp_funcatpcha_cf7.php");
+
+add_filters_actions();
+/**
+* Added wordpress filters for funcaptcha
+*
+* @return null
+*/
+function add_filters_actions() {
+    register_deactivation_hook(__FILE__, 'funcaptcha_deactivate');
+    add_action('init', 'funcaptcha_register_style');
+    add_action('login_enqueue_scripts', 'funcaptcha_login_styles');
+    add_action( 'admin_menu', 'funcaptcha_add_admin_menu' );
+    add_filter( 'plugin_action_links_' . PLUGIN_BASENAME, 'funcaptcha_register_plugin_action_links', 10, 1);
+    add_filter('plugin_row_meta', 'funcaptcha_register_plugin_meta_links', 10, 2);
+    add_action('init', 'funcaptcha_init');
+}
+
+/**
+* Setup where to display on forms
+*
+* @return null
+*/
+function funcaptcha_init() {
+    funcpatcha_addons();
+    funcatpcha_display_admin();
+
+    $funcaptcha_options = funcaptcha_get_settings();
+
+    //if comment_form is set in the options, attach to the comment hooks
+    if( $funcaptcha_options['comment_form'] ) {
+        add_action('comment_form', 'funcaptcha_comment_form');
+        add_filter('preprocess_comment', 'funcaptcha_comment_post', 10, 1);
+    }
+    
+    // If register_form is set in the options, attach to the register hooks
+    if( $funcaptcha_options['register_form'] ) {
+        add_action('register_form', 'funcaptcha_register_form');
+        add_action('register_post', 'funcaptcha_register_post', 10, 3);
+    }
+
+    // If password_form is set in the options, attach to the lost password hooks    
+    if( $funcaptcha_options['password_form'] ) {
+        add_action('lostpassword_form', 'funcaptcha_lost_password_form');
+        add_action('lostpassword_post', 'funcaptcha_lost_password_post');
+    }
+
+    // Registers the funcaptcha CF7 Actions if plugin is activated
+    if( $funcaptcha_options['cf7_support'] ) {
+        if (CF7_INSTALLED) {
+            funcaptcha_register_cf7_actions();
+        }
+    }
+}
+
+/**
+* Add action to display error to admin users if not finished setup
+*
+* @return null
+*/
+function funcatpcha_display_admin() {
+    // Adds an admin notice to set the keys if not set
+    if (funcaptcha_is_key_missing()) {
+        add_action('admin_footer', 'funcaptcha_display_keys_notice');
+    }
+}
+
+/**
+* Adds funcaptcha to the plugins options
+*
+* @return null
+*/
+function funcaptcha_add_admin_menu() {
+    add_submenu_page('plugins.php', 'FunCaptcha', 'FunCaptcha', 'manage_options', __FILE__, 'funcaptcha_show_settings');
+}
+
+/**
+* check to see if other plugins are installed
+*
+* @return null
+*/
+function funcpatcha_addons() {
+    require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+    define('CF7_INSTALLED', is_plugin_active('contact-form-7/wp-contact-form-7.php'));
+}
+
+/**
+* setup funcaptcha settings url
+*
+* @return null
+*/
+function funcaptcha_register_plugin_action_links($links) {
+
+    $settings_link = '<a href="plugins.php?page='.PLUGIN_BASENAME.'">' . __('Settings', 'captcha') . '</a>';
+    array_unshift( $links, $settings_link );
+
+    return $links;
+}
+
+/**
+* enable meta links
+*
+* @return links array url links for being displayed under plugin
+*/
+function funcaptcha_register_plugin_meta_links($links, $file) {
+
+    if ($file == PLUGIN_BASENAME) {
+
+        $links[] = '<a href="plugins.php?page='.PLUGIN_BASENAME.'">' . __('Settings','captcha') . '</a>';
+        $links[] = '<a href="https://www.swipeads.co/contact">' . __('Contact','captcha') . '</a>';
+    }
+    return $links;
+}
+
+
+/**
+* register stylesheet for registration
+*
+* @return null
+*/
+function funcaptcha_register_style() {
+    wp_register_style('funcaptchaStylesheet', plugins_url('css/min_funcaptcha_styles.css', __FILE__));
+}
+
+/**
+* register stylesheet for login
+*
+* @return null
+*/
+function funcaptcha_login_styles() {
+    $action = ( isset( $_GET['action'] ) ) ? $_GET['action'] : '';
+    $options = funcaptcha_get_settings();
+
+    if ( ( $action == 'lostpassword' && $options['password_form'] ) || ( $action == 'register' && $options['register_form'] ) ) {
+        ?><style type="text/css">#login{width: 418px !important;}</style><?php
+    }
+}
+
+
+/**
+* Create an instance of the funcaptcha object
+*
+* @return object funcaptcha object
+*/
+function funcaptcha_API() { 
+    return new FUNCAPTCHA();
+}
+
+/**
+* Show correct settings screen
+*
+* @return string echo of HTML
+*/
+function funcaptcha_show_settings() {
+    
+    $funcaptcha_options = funcaptcha_get_settings();
+    $action = ( isset( $_POST['funcaptcha']['action'] ) ) ? $_POST['funcaptcha']['action'] : '';
+    switch ( $action ) {
+        case 'install':
+            funcaptcha_install_plugin();
+            break;
+        case 'upgrade':
+            funcaptcha_upgrade_plugin();
+            break;
+        case 'settings':
+            funcaptcha_install_plugin();
+            break;
+        default:
+            $action = funcaptcha_check_for_upgrade_or_install();
+            break;
+    }
+    
+    wp_enqueue_style('funcaptchaStylesheet');
+
+    //debug code
+    if (!in_array($action, array('install', 'upgrade', 'settings'))) {
+        error_log("FATAL ERROR:"
+                    . print_r(debug_backtrace(), true));
+        echo "Plugin error. Please contact the FunCaptcha support team.";
+        return;
+    }
+    
+    switch ($action) {
+        case 'install':
+            $page_opts = funcaptcha_get_install_page_options($action);
+            break;
+        case 'upgrade':
+            $page_opts = funcaptcha_get_upgrade_page_options($action);
+            break;
+        case 'settings':
+            $page_opts = funcaptcha_get_settings_page_options();
+            break;
+    }
+    
+    echo "<div class='wrap'>";
+    echo "<h2><img src='" . plugins_url('images/fc_meta_logo.png', PLUGIN_BASENAME) . "' style='max-width:100%;' alt='FunCaptcha'></h2>";
+    
+    if ($page_opts['flash_message']) {
+        echo $page_opts['flash_message'];
+    }
+        
+    $funcaptcha_options = funcaptcha_get_settings();
+
+    include('wp_funcaptcha_admin.php');
+    echo "</div>";
+}
+
+/**
+* Show settings screen
+*
+* @return string echo of HTML
+*/
+function funcaptcha_display_keys_notice() {
+    $path = plugin_basename(__FILE__);
+    echo "<div class='error'><p><strong>Thanks for installing FunCaptcha.</strong>You must <a href='plugins.php?page=" . $path . "'>setup your FunCaptcha</a> for it to be displayed.</p></div>";
+}
+
+/**
+* Checks if public and private keys are missing
+*
+* @return boolean if keys are missing
+*/
+function funcaptcha_is_key_missing() {
+    if (array_key_exists('funcaptcha', $_POST)) {
+        $options = funcaptcha_get_settings_post();
+    } else {
+        $options = funcaptcha_get_settings();
+    }
+
+    if ( $options['public_key'] == '' ||  $options['private_key'] == '' ) {
+        return true;
+    }
+}
+
+/**
+* save settings
+*
+* @return null
+*/
+function funcaptcha_install_plugin() {
+    $options = funcaptcha_get_settings_post();
+    funcaptcha_set_options($options);   
+}
+
+/**
+* set new version number
+*
+* @return null
+*/
+function funcaptcha_upgrade_plugin() {
+    $options = funcaptcha_get_settings();
+    $options['version'] = FUNCAPTCHA_VERSION;
+    
+    funcaptcha_set_options($options);
+}
+
+/**
+* checks if should upgrade plugin, or install ne
+*
+* @return string mode to put the settings screen into
+*/
+function funcaptcha_check_for_upgrade_or_install() {
+
+    $funcaptcha_options = funcaptcha_get_settings();
+
+    // Check for previous installation
+    if (isset($funcaptcha_options['version'])) {
+    
+        // If there's a previous installation, check for an upgrade
+        if (funcaptcha_upto_date($funcaptcha_options['version'])) {
+  
+            // Version is up to date, move on to settings page
+            return 'settings';
+        
+        } else {
+            // Version is not up to date, time to upgrade
+            funcaptcha_upgrade_plugin();
+            return 'upgrade';
+        }
+    } else {
+    
+        return 'install';
+    }
+}
+
+/**
+* stores data into wp database
+*
+* @return array
+*/
+function funcaptcha_set_options($options) {
+    global $wpmu;
+    
+    $options_allowed = array(   'public_key',
+                                'private_key',
+                                'version',
+                                'register_form',
+                                'password_form',
+                                'comment_form',
+                                'hide_users',
+                                'error_message',
+                                'cf7_support');
+
+    $new_options = array();
+    foreach($options_allowed as $optal) {
+        if(isset($options[$optal])) {
+            $new_options[$optal] = $options[$optal];
+        }
+    }
+    
+    if ( 1 == $wpmu ) {
+        update_site_option( 'funcaptcha_options', $new_options );
+    } else {
+        update_option( 'funcaptcha_options', $new_options );
+    }
+    
+    return $new_options;
+}
+
+/**
+* gets data from wp database
+*
+* @return array settings
+*/
+function funcaptcha_get_settings() {
+    global $wpmu;
+
+    $defaults = array(
+        'version' => FUNCAPTCHA_VERSION,
+        'public_key' => '',
+        'private_key'   => '',
+        'register_form' => false,
+        'password_form' => false,
+        'comment_form' => false,
+        'hide_users' => false,
+        'submit_id' => ''
+    );
+
+    if ( 1 == $wpmu ){
+        $funcaptcha_options = get_site_option( 'funcaptcha_options', array() ); // blog network
+    } else {
+        $funcaptcha_options = get_option( 'funcaptcha_options', array() ); // single site
+    }
+
+    return wp_parse_args( $funcaptcha_options, $defaults );
+}
+
+/**
+* removes data from wp database
+*
+* @return null
+*/
+function funcaptcha_delete_options() {
+    global $wpmu;
+    
+    if ( 1 == $wpmu) {
+        delete_site_option('funcaptcha_options');
+    } else {
+        delete_option('funcaptcha_options');
+    }
+}
+
+function funcaptcha_deactivate() {
+       delete_option('funcaptcha_options');
+}
+
+/**
+* checks version number is less then currently installed
+*
+* @return boolean
+*/
+function funcaptcha_upto_date($install_version) {
+    return version_compare( $install_version, FUNCAPTCHA_VERSION, '>=' );
+}
+
+/**
+* get data from settings form
+*
+* @return array
+*/
+function funcaptcha_get_settings_post() {
+    $funcaptcha_post = $_POST['funcaptcha'];
+
+    $defaults = array(
+        'version' => FUNCAPTCHA_VERSION,
+        'public_key' => '',
+        'private_key'   => '',
+        'register_form' => '',
+        'password_form' => '',
+        'comment_form' => '',
+        'hide_users' => '',
+        'cf7_support' => ''
+        );
+
+    return wp_parse_args( $funcaptcha_post, $defaults );
+}
+
+
+/**
+* display funcaptcha in comment
+*
+* @return string
+*/
+function funcaptcha_comment_form() {
+
+    $options = funcaptcha_get_settings();
+          
+    // Do not show if the user is logged and it is not enabled for logged in users
+    if (is_user_logged_in() && 1 == $options['hide_users']) {
+        return;
+    }
+
+    $funcaptcha = funcaptcha_API();
+    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    echo "<div id='funcaptcha-comment' style='text-align: center'>" . $html .  "</div>";
+
+}
+
+/**
+* validates comment funcaptcha
+*
+* @return array
+*/
+function funcaptcha_comment_post($comment) {
+    // Do not show if the user is logged and it is not enabled for logged in users
+    if ( is_user_logged_in() && 1 == $options['hide_users'] ) {
+        return $comment;
+    }
+
+    //Skip for comment replies from the admin menu
+    if ( isset( $_POST['action'] ) && $_POST['action'] == 'replyto-comment' &&
+                ( check_ajax_referer( 'replyto-comment', '_ajax_nonce', false ) || 
+                check_ajax_referer( 'replyto-comment', '_ajax_nonce-replyto-comment', false ) ) ) {
+        return $comment;
+    }
+
+    // Skip for trackback or pingback
+    if ( $comment['comment_type'] != '' && $comment['comment_type'] != 'comment' ) {
+        return $comment;
+    }
+    
+    $funcaptcha = funcaptcha_API();
+    if ( $funcaptcha->checkResult($options['private_key']) ) {
+        return $comment;
+    } else {
+        wp_die(__((htmlentities($options['error_message']) . ' <br/><input type="button" value="Go Back" onclick="history.back(-1)" />'),'funcaptcha'));
+    }
+}
+
+
+/**
+* display funcaptcha in registration form
+*
+* @return boolean
+*/
+function funcaptcha_register_form() {
+     
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+    
+    $funcaptcha = funcaptcha_API();
+    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    echo "<div id='funcaptcha-register' style='text-align: center'>" . $html .  "</div>";
+    
+    return true;
+}
+
+/**
+* validates registration funcaptcha
+*
+* @return array
+*/
+function funcaptcha_register_post($login, $email, $errors) {
+   
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+    
+    if ( $funcaptcha->checkResult($options['private_key']) ) {
+        return;
+    } else {
+        $errors->add('funcaptcha_incorrect', '<strong>'.__('ERROR', 'funcaptcha').'</strong>: '.__(htmlentities($options['error_message']), 'funcaptcha'));
+    }
+    return $errors;
+}
+
+/**
+* display funcaptcha in lost password form
+*
+* @return null
+*/
+function funcaptcha_lost_password_form() {
+    funcaptcha_register_form();
+}
+
+/**
+* validates lost password funcaptcha
+*
+* @return null
+*/
+function funcaptcha_lost_password_post() {
+  
+     $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+    
+    if ( $funcaptcha->checkResult($options['private_key']) ) {
+        return;
+    } else {
+        wp_die(__((htmlentities($options['error_message']) . ' <br/><input type="button" value="Go Back" onclick="history.back(-1)" />'),'funcaptcha'));
+    }
+}
+
+/**
+* setup settings page
+*
+* @return array
+*/
+function funcaptcha_get_settings_page_options() {
+
+    $page_opts = array();
+    $page_opts['title'] = 'FunCaptcha Settings';
+    $page_opts['button'] = 'Update Settings';
+    $page_opts['flash_message'] = null;
+    
+    // If the form was posted
+    if (isset($_POST['funcaptcha'])) {
+        $page_opts['flash_message'] = "Changes saved.";
+    }
+    
+    return $page_opts;
+}
+
+/**
+* setup upgrade page
+*
+* @return array
+*/
+function funcaptcha_get_upgrade_page_options(&$action) {
+    
+    $page_opts = array();
+    $page_opts['title'] = 'Upgrade';
+    $page_opts['button'] = 'Complete Upgrade';
+    $page_opts['flash_message'] = "Please take a moment to make sure the following is correct and complete your upgrade.";
+    
+    // If the form was posted
+    if (isset($_POST['funcaptcha'])) {
+        $action = 'settings';
+        $page_opts = funcaptcha_get_settings_page_options();
+        $page_opts['flash_message'] = "Your plugin has been successfully upgraded.";
+    }
+    
+    return $page_opts;
+}
+
+/**
+* setup install page
+*
+* @return array
+*/
+function funcaptcha_get_install_page_options(&$action) {
+
+    $page_opts = array();
+    $page_opts['title'] =  "Installation";
+    $page_opts['button'] = "Complete Installation";
+    $page_opts['flash_message'] = "<p>To complete your installation:</p><ol><li><a href='https://swipeads.co/register'>Register for an account</a> on SwipeAds.</li><li>Copy the public and private keys into the fields below.</li></ol>";
+    
+    if (isset($_POST['funcaptcha'])) {
+        $action = 'settings';
+        $page_opts = funcaptcha_get_settings_page_options();
+        $page_opts['flash_message'] = "<div class='alert valid'>The plugin has been successfully installed.</div>";
+    }
+    
+    return $page_opts;
+}
+
