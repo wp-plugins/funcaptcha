@@ -9,7 +9,7 @@ Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every
 
 == Description ==
 
-Spammers abuse your site, but users hate typing out twisty letters or ad phrases. Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game that blocks the bots while giving your users a few moments of fun. It's a real security solution, hardened by experts and automatically updated to provide the best protection.
+Spammers abuse your site, but users hate typing out twisty letters or ad phrases. Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game that blocks the bots while giving your users a few moments of fun. It's a real security solution, ..hardened by experts and automatically updated to provide the best protection. Try [a demo](https://swipeads.co/) on our site!
 
 Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge.
 
@@ -41,7 +41,19 @@ Our epic battle against bots doesn't have to be a headache. Let's fight while ha
 
 == Frequently Asked Questions ==
 
-For a full list of frequently asked questions, please see our [FAQ page](https://swipeads.co/faqs)
+How can I try it out? 
+Try [a demo](https://swipeads.co/) of FunCaptcha on our site.
+
+Does FunCaptcha work on mobile and all other platforms?
+Yes. It is built on HTML5, with full support for mobiles. It works great with touch interfaces, and does not require any typing. All platforms used by a site’s customers are supported, including every kind of PC and Mac. A Flash version seamlessly appears for older browsers. In short, no user will be blocked.
+
+Is there audio accessibility?
+Yes. We use the well-known “reCAPTCHA” service to provide an audio CAPTCHA for those who need it.
+
+Are other CAPTCHAs more secure?
+Unfortunately, all typed-in CAPTCHAs are now being solved by bots to some degree. Some newer CAPTCHA alternatives are actually much easier for bots to solve than before! Once these new alternatives become popular enough to be worthwhile for hackers to target, they will crumble. FunCaptcha will stay ahead of the curve, and clearly explain how we do it-- not resort to a black box of promises.
+
+Other questions? For a full list of frequently asked questions, please see our FAQ page](https://swipeads.co/faqs).
 
 == Screenshots ==
 
