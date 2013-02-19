@@ -41,16 +41,16 @@ Our epic battle against bots doesn't have to be a headache. Let's fight while ha
 
 == Frequently Asked Questions ==
 
-How can I try it out? 
+= How can I try it out? =
 Try [a demo](https://swipeads.co/) of FunCaptcha on our site.
 
-Does FunCaptcha work on mobile and all other platforms?
+= Does FunCaptcha work on mobile and all other platforms? =
 Yes. It is built on HTML5, with full support for mobiles. It works great with touch interfaces, and does not require any typing. All platforms used by a site’s customers are supported, including every kind of PC and Mac. A Flash version seamlessly appears for older browsers. In short, no user will be blocked.
 
-Is there audio accessibility?
+= Is there audio accessibility? =
 Yes. We use the well-known “reCAPTCHA” service to provide an audio CAPTCHA for those who need it.
 
-Are other CAPTCHAs more secure?
+= Are other CAPTCHAs more secure? =
 Unfortunately, all typed-in CAPTCHAs are now being solved by bots to some degree. Some newer CAPTCHA alternatives are actually much easier for bots to solve than before! Once these new alternatives become popular enough to be worthwhile for hackers to target, they will crumble. FunCaptcha will stay ahead of the curve, and clearly explain how we do it-- not resort to a black box of promises.
 
 Other questions? For a full list of frequently asked questions, please see our FAQ page](https://swipeads.co/faqs).
