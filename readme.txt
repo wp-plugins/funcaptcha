@@ -9,7 +9,7 @@ Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every
 
 == Description ==
 
-Spammers abuse your site, but users hate typing out twisty letters or ad phrases. Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game that blocks the bots while giving your users a few moments of fun. It's a real security solution, ..hardened by experts and automatically updated to provide the best protection. Try [a demo](https://swipeads.co/) on our site!
+Spammers abuse your site, but users hate typing out twisty letters or ad phrases. Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game that blocks the bots while giving your users a few moments of fun. It's a real security solution hardened by experts and automatically updated to provide the best protection. Try [a demo](https://swipeads.co/) on our site!
 
 Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge.
 
