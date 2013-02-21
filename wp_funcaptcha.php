@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.1.0
+ * @version 0.2.0
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,7 +9,7 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: https://swipeads.co/
-Version: 0.1.0
+Version: 0.2.0
 */
 
 
@@ -21,6 +21,9 @@ require_once(PLUGIN_PATH . "funcaptcha.php");
 require_once(PLUGIN_PATH . "addons/wp_funcatpcha_cf7.php");
 
 add_filters_actions();
+
+//BP_INSTALLED
+
 /**
 * Added wordpress filters for funcaptcha
 *
@@ -55,8 +58,14 @@ function funcaptcha_init() {
     
     // If register_form is set in the options, attach to the register hooks
     if( $funcaptcha_options['register_form'] ) {
-        add_action('register_form', 'funcaptcha_register_form');
-        add_action('register_post', 'funcaptcha_register_post', 10, 3);
+        if (BP_INSTALLED) {
+            add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
+            add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
+        } else {
+            add_action('register_form', 'funcaptcha_register_form');
+            add_action('register_post', 'funcaptcha_register_post', 10, 3);
+        }
+        
     }
 
     // If password_form is set in the options, attach to the lost password hooks    
@@ -102,7 +111,11 @@ function funcaptcha_add_admin_menu() {
 function funcpatcha_addons() {
     require_once(ABSPATH . 'wp-admin/includes/plugin.php');
     define('CF7_INSTALLED', is_plugin_active('contact-form-7/wp-contact-form-7.php'));
+    define('BP_INSTALLED', is_plugin_active('buddypress/bp-loader.php'));
 }
+
+if (function_exists('bp_is_register_page'))
+    $is_buddypress = true;
 
 /**
 * setup funcaptcha settings url
@@ -349,11 +362,11 @@ function funcaptcha_get_settings() {
         'version' => FUNCAPTCHA_VERSION,
         'public_key' => '',
         'private_key'   => '',
-        'register_form' => false,
-        'password_form' => false,
-        'comment_form' => false,
+        'register_form' => true,
+        'password_form' => true,
+        'comment_form' => true,
         'hide_users' => false,
-        'submit_id' => ''
+        'error_message' => ''
     );
 
     if ( 1 == $wpmu ){
@@ -415,6 +428,65 @@ function funcaptcha_get_settings_post() {
     return wp_parse_args( $funcaptcha_post, $defaults );
 }
 
+/**
+* resize funcaptcha if mobile screen is small and theme is <300 pixels wide
+*
+* @return string
+*/
+function funcaptcha_resize_mobile() {
+     $script =   "<script type='text/javascript'>
+                    var divSize = document.getElementById('funcaptcha-wrapper').offsetWidth;
+                    if (divSize < 300) {
+                        var css = '#FunCaptcha iframe {width: 100% !important;zoom: 0.99;-o-transform: scale(0.99);-o-transform-origin: 0 0;-webkit-transform: scale(0.99, 0.98);-moz-transform: scale(0.99, 0.98);transform: scale(0.99, 0.98);-moz-transform-origin:0 0;-webkit-transform-origin:0 0;transform-origin:0 0;z-index:90;}',
+                        head = document.getElementsByTagName('head')[0],
+                        style = document.createElement('style');
+                        style.type = 'text/css';
+                        if (style.styleSheet){
+                          style.styleSheet.cssText = css;
+                        } else {
+                          style.appendChild(document.createTextNode(css));
+                        }
+
+                        head.appendChild(style);
+                    }
+                </script>";
+    
+    // Return the script.
+    return $script;
+}
+
+/**
+ * Moves the submit button to the bottom and moves the PlayThru above the
+ * comment form if necessary
+ *
+ * TODO: It might be a good idea to use wp_enqueue_script instead, but there
+ * might be issues with dynamically inserting the button
+ */
+function funcaptcha_rearrange_elements($button_id = 'submit') {
+    if ($button_id == '') {
+        $button_id = 'submit';
+    }
+    
+    $script =   "<script type='text/javascript'>
+                    var moved = false;
+                    // This ensures the code is executed in the right order
+                    if (!moved) {
+                        rearrange_form_elements();
+                    } else {
+                        setTimeout('rearrange_form_elements()', 1000);
+                    }
+                    function rearrange_form_elements() {
+                        var button = document.getElementById('" . $button_id . "');
+                        if (button != null) {
+                            button.parentNode.removeChild(button);
+                            document.getElementById('funcaptcha-wrapper').appendChild(button);
+                        }
+                    }
+                </script>";
+    
+    // Return the script.
+    return $script;
+}
 
 /**
 * display funcaptcha in comment
@@ -432,7 +504,10 @@ function funcaptcha_comment_form() {
 
     $funcaptcha = funcaptcha_API();
     $html = $funcaptcha->getFunCaptcha($options['public_key']);
-    echo "<div id='funcaptcha-comment' style='text-align: center'>" . $html .  "</div>";
+    
+    echo "<div id='funcaptcha-wrapper'>" . $html .  "</div>";
+    echo funcaptcha_rearrange_elements("submit");
+    echo funcaptcha_resize_mobile();
 
 }
 
@@ -468,7 +543,6 @@ function funcaptcha_comment_post($comment) {
     }
 }
 
-
 /**
 * display funcaptcha in registration form
 *
@@ -481,8 +555,25 @@ function funcaptcha_register_form() {
     
     $funcaptcha = funcaptcha_API();
     $html = $funcaptcha->getFunCaptcha($options['public_key']);
-    echo "<div id='funcaptcha-register' style='text-align: center'>" . $html .  "</div>";
+    echo "<div id='funcaptcha-wrapper'>" . $html .  "</div>";
+    echo funcaptcha_resize_mobile();
+    return true;
+}
+
+/**
+* display funcaptcha in registration form
+*
+* @return boolean
+*/
+function funcaptcha_register_form_bp() {
+     
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
     
+    $funcaptcha = funcaptcha_API();
+    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    echo "<div id='funcaptcha-wrapper'>" . $html .  "</div>";
+    echo funcaptcha_resize_mobile();
     return true;
 }
 
@@ -502,6 +593,18 @@ function funcaptcha_register_post($login, $email, $errors) {
         $errors->add('funcaptcha_incorrect', '<strong>'.__('ERROR', 'funcaptcha').'</strong>: '.__(htmlentities($options['error_message']), 'funcaptcha'));
     }
     return $errors;
+}
+
+// Check the response to the puzzle
+function funcaptcha_register_post_bp($result) {
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+
+     if ( $funcaptcha->checkResult($options['private_key']) ) {
+     } else {
+         wp_die(__((htmlentities($options['error_message']) . ' <br/><input type="button" value="Go Back" onclick="history.back(-1)" />'),'funcaptcha'));
+    }
+    return $result;
 }
 
 /**

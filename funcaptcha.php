@@ -3,7 +3,7 @@
  * FunCaptcha
  * PHP Integration Library
  *
- * @version 0.0.2
+ * @version 0.0.3
  *
  * Copyright (c) 2013 SwipeAds -- https://www.swipeads.co
  * AUTHOR:
@@ -31,6 +31,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wp";
+	protected $funcaptcha_plugin_version = "0.2.0";
 
 	protected $session_token;
 
@@ -76,11 +77,12 @@ if ( ! class_exists('FUNCAPTCHA')):
 
 		//send your public key, your site name, the users ip and browser type.
 		$data = array(
-			'public_key'	=> $this->funcaptcha_public_key,
-			'site' 			=> $_SERVER["SERVER_NAME"],
-			'userip'	 	=> $_SERVER["REMOTE_ADDR"],
-			'userbrowser'	=> $_SERVER['HTTP_USER_AGENT'],
-			'api_type'		=> $this->funcaptcha_api_type
+			'public_key'		=> $this->funcaptcha_public_key,
+			'site' 				=> $_SERVER["SERVER_NAME"],
+			'userip'	 		=> $_SERVER["REMOTE_ADDR"],
+			'userbrowser'		=> $_SERVER['HTTP_USER_AGENT'],
+			'api_type'			=> $this->funcaptcha_api_type,
+			'plugin_version'	=> $this->funcaptcha_plugin_version
 		);
 
 		//get session token.

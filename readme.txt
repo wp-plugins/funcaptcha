@@ -1,9 +1,9 @@
 === FunCaptcha - game CAPTCHA ===
 Contributors: swipeads
-Tags: fun, captcha, anti-spam, spam, bot, comments, funcaptcha, swipeads, recaptcha, captcha, verification, bots, spambots, security, login, registration, iphone, android, html5, advertising, Akismet, blackberry, contact form 7, iPad, monetize, plugin, security, Security captcha, spam, type-in, Windows Phone 7, wpms, bot, bots, capcha, catcha, cf7, comment, comments, html5, human, robot
+Tags: fun, captcha, anti-spam, spam, bot, comments, funcaptcha, swipeads, recaptcha, captcha, verification, bots, spambots, security, login, registration, iphone, android, html5, advertising, Akismet, buddypress, blackberry, contact form 7, iPad, monetize, plugin, security, Security captcha, spam, type-in, Windows Phone 7, wpms, bot, bots, capcha, catcha, cf7, comment, comments, html5, human, robot
 Requires at least: 2.8.0
 Tested up to: 3.5.1
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 
 Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 
@@ -65,8 +65,15 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 
 == Changelog ==
 
+= 0.2.0 =
+* Buddypress support.
+* Now displays FunCaptcha before the comment submit button.
+* Fixed a visual issue on mobile devices if a themes width was less than 300pixels, now FunCaptcha will resize to fit.
+* New default settings.
+* Left aligned FunCaptcha to match wordpress style better.
+
 = 0.1.0 =
-* Bug fix
+* Bug fix.
 
 = 0.0.1 =
 * Beta release.
