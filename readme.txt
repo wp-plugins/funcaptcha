@@ -24,6 +24,8 @@ Our epic battle against bots doesn't have to be a headache. Let's fight while ha
 
 == Installation ==
 
+You can view instructions with images at [our site](https://swipeads.co/setup/).
+
 = Install the Plugin =
 
 1. Log in to your Wordpress blog as the administrator
