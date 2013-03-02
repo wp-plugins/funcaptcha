@@ -55,6 +55,12 @@ Yes. We use the well-known “reCAPTCHA” service to provide an audio CAPTCHA f
 = Are other CAPTCHAs more secure? =
 Unfortunately, all typed-in CAPTCHAs are now being solved by bots to some degree. Some newer CAPTCHA alternatives are actually much easier for bots to solve than before! Once these new alternatives become popular enough to be worthwhile for hackers to target, they will crumble. FunCaptcha will stay ahead of the curve, and clearly explain how we do it-- not resort to a black box of promises.
 
+= FunCaptcha does not appear for me =
+We have noticed a few of our users are using the JetPack plugin, which currently does not support third party CAPTCHAs. You can disable the JetPack comment addon from your dashboard and it will work fine.
+
+= FunCaptcha shows an error message =
+This error message will only appear if you have not correctly added your private and public keys to the settings panel in your wordpress admin dashboard.
+
 = Other questions? =
 For a full list of frequently asked questions, please see our [FAQ page](https://swipeads.co/faqs).
 
