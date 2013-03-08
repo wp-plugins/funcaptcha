@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: fun, captcha, anti-spam, spam, bot, comments, funcaptcha, swipeads, recaptcha, captcha, verification, bots, spambots, security, login, registration, iphone, android, html5, advertising, Akismet, buddypress, buddypress captcha, buddypress secure, blackberry, contact form 7, iPad, monetize, plugin, security, Security captcha, spam, type-in, Windows Phone 7, wpms, bot, bots, capcha, catcha, cf7, comment, comments, html5, human, robot
 Requires at least: 2.8.0
 Tested up to: 3.5.1
-Stable tag: 0.2.0
+Stable tag: 0.2.1
 
 Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 
@@ -72,6 +72,9 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 4. Admin Page
 
 == Changelog ==
+
+= 0.2.1 =
+* Removed php short codes to add support for older versions of PHP or those that have them turned off.
 
 = 0.2.0 =
 * Buddypress support.

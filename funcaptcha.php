@@ -31,11 +31,11 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wp";
-	protected $funcaptcha_plugin_version = "0.2.0";
+	protected $funcaptcha_plugin_version = "0.2.1";
 
 	protected $session_token;
 
-	protected $version = '0.0.1';
+	protected $version = '0.0.3';
 
 	/**
 	 * Constructor
