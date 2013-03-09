@@ -5,22 +5,19 @@ Requires at least: 2.8.0
 Tested up to: 3.5.1
 Stable tag: 0.2.1
 
-Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
+Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For WP, BuddyPress, CF7.
 
 == Description ==
 
-Spammers abuse your site, but users hate typing out twisty letters or ad phrases. Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game that blocks the bots while giving your users a few moments of fun. It's a real security solution hardened by experts and automatically updated to provide the best protection. Try [a demo](https://swipeads.co/) on our site!
+Spammers abuse your site, but users hate typing out twisty letters or ad phrases (aka CAPTCHA and reCAPTCHA). Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game CAPTCHA that blocks the bots while giving your users a few moments of fun. It's a real security solution hardened by experts and automatically updated to provide the best protection. Try [a demo](https://swipeads.co/) on our site!
 
-Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge.
+Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge CAPTCHA provided by reCAPTCHA.
 
 The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often.
 
-If you get in on the ground floor now, you can be first in line to start earning money with upcoming FunCaptchas that integrate advertising. They will require no typing or extra time, and remain as secure as ever.
+If you get in on the ground floor now, you can be first in line to start earning money with upcoming FunCaptchas that integrate advertising with the fun, fast CAPTCHA games you see now. They will require no typing or extra time, and remain as secure as ever.
 
-Learn more, give feedback, and ask questions at our website.
-Our epic battle against bots doesn't have to be a headache. Let's fight while having some fun!
-
-
+Learn more, give feedback, and ask questions at our website. Our epic battle against bots doesn't have to be a headache. Let's fight while having some fun!
 
 == Installation ==
 
