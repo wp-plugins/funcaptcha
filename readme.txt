@@ -1,6 +1,6 @@
 === FunCaptcha - game CAPTCHA ===
 Contributors: swipeads
-Tags: fun, captcha, anti-spam, spam, bot, comments, funcaptcha, swipeads, recaptcha, captcha, verification, bots, spambots, security, login, registration, iphone, android, html5, advertising, Akismet, buddypress, buddypress captcha, buddypress secure, blackberry, contact form 7, iPad, monetize, plugin, security, Security captcha, spam, type-in, Windows Phone 7, wpms, bot, bots, capcha, catcha, cf7, comment, comments, html5, human, robot
+Tags: antispam, capcha, captcha, captha, catcha, comment, login, lost password, game captcha, registration, spam, text captcha
 Requires at least: 2.8.0
 Tested up to: 3.5.1
 Stable tag: 0.2.1
