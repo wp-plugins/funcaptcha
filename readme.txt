@@ -1,6 +1,6 @@
 === FunCaptcha - game CAPTCHA ===
 Contributors: swipeads
-Tags: antispam, capcha, captcha, captha, catcha, comment, login, lost password, game captcha, registration, spam, text captcha
+Tags: antispam, capcha, captcha, captha, catcha, comment, login, lost password, game captcha, registration, spam, text captcha, buddypress, contact form 7
 Requires at least: 2.8.0
 Tested up to: 3.5.1
 Stable tag: 0.2.1
