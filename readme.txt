@@ -67,6 +67,7 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 2. Registration Form
 3. Lost Password Form
 4. Admin Page
+5. Buddypress Form
 
 == Changelog ==
 
