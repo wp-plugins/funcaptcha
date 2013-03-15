@@ -1,6 +1,6 @@
 === FunCaptcha - game CAPTCHA ===
 Contributors: swipeads
-Tags: antispam, capcha, captcha, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text captcha, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image captcha, picture CAPTCHA, recaptcha, registration, security, audio captcha, Simple CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA
+Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, Simple CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA
 Requires at least: 2.8.0
 Tested up to: 3.5.1
 Stable tag: 0.2.1
@@ -53,10 +53,10 @@ Yes. We use the well-known “reCAPTCHA” service to provide an audio CAPTCHA f
 Unfortunately, all typed-in CAPTCHAs are now being solved by bots to some degree. Some newer CAPTCHA alternatives are actually much easier for bots to solve than before! Once these new alternatives become popular enough to be worthwhile for hackers to target, they will crumble. FunCaptcha will stay ahead of the curve, and clearly explain how we do it-- not resort to a black box of promises.
 
 = FunCaptcha does not appear for me =
-We have noticed a few of our users are using the JetPack plugin, which currently does not support third party CAPTCHAs. You can disable the JetPack comment addon from your dashboard and it will work fine.
+We have noticed a few of our users are using the JetPack plugin, which currently does not support third party CAPTCHAs. You can disable the JetPack comment addon from your dashboard and it will work fine. There may be other plugins that cause CAPTCHAs to not appear. We recommend you note down any type of comment or registration plugins before you contact us to help us better assist you. If you have any other CAPTCHA plugins, please disable those as well.
 
 = FunCaptcha shows an error message =
-This error message will only appear if you have not correctly added your private and public keys to the settings panel in your wordpress admin dashboard.
+This error message will only appear if you have not correctly added your private and public keys to the settings panel in your wordpress admin dashboard. Our CAPTCHA requires these to properly secure your website.
 
 = Other questions? =
 For a full list of frequently asked questions, please see our [FAQ page](https://swipeads.co/faqs).
@@ -67,7 +67,6 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 2. Registration Form
 3. Lost Password Form
 4. Admin Page
-5. Buddypress Form
 
 == Changelog ==
 
