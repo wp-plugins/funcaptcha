@@ -448,7 +448,7 @@ function funcaptcha_get_settings() {
         'password_form' => true,
         'comment_form' => true,
         'hide_users' => false,
-        'error_message' => ''
+        'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.'
     );
 
     if ( 1 == $wpmu ){
@@ -524,7 +524,8 @@ function funcaptcha_get_settings_post() {
         'password_form' => '',
         'comment_form' => '',
         'hide_users' => '',
-        'cf7_support' => ''
+        'cf7_support' => '',
+        'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.'
         );
 
     return wp_parse_args( $funcaptcha_post, $defaults );
