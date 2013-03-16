@@ -106,7 +106,7 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 = 0.2.2 =
 * Gravity Forms support. You can now use FunCaptcha in any Gravity Forms, using the advanced field elements.
 * Activate your account directly in the plugin to get your keys. No longer do you need to leave wordpress to register and activate an account to get your security keys. We have done our best to make this process as smooth and simple as possible.
-* Activate tab added to support the new in-built registration process. Pulbic and Private keys have also been moved to this new tab.
+* Activate tab added to support the new in-built registration process. Public and Private keys have also been moved to this new tab.
 * Enhanced built in error checking. If your keys look incorrect we will now warn you.
 * Fixed bug where if logged in users was disabled may still require verification.
 
