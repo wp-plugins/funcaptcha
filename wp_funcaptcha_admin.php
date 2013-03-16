@@ -1,0 +1,64 @@
+<?
+	//default text to display if nothing is entered.
+	$funcaptcha_Default = "Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.";
+?>
+<style type="text/css">.nav-btn{background-color:white;cursor:hand;cursor:pointer}.nav-btn:hover{color:#d54e21}</style>
+<h2 class="nav-tab-wrapper">
+	<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-page'>
+		<input type='submit' class="nav-btn nav-tab <?php echo ( $_POST['funcaptcha-page'] == 'Settings' ) ? 'nav-tab-active' : ''; ?>" name='funcaptcha-page' value='Settings' />
+		<input type='submit' class="nav-btn nav-tab <?php echo ( $_POST['funcaptcha-page'] == 'Activate' ) ? 'nav-tab-active' : ''; ?>" name='funcaptcha-page' value='Activate' />
+	</form>
+</h2>
+<div class='form-css'>
+	<div class='funcaptcha-box'>
+		<div class='inside'>
+			<h2 class="settings-title">Settings</h2>
+			<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-settings'>
+				<?php if (funcaptcha_is_key_missing()) { ?>
+					<p style="color:red">To activate this plugin, you need to supply access keys. You can do that on the <a href='<?php echo "plugins.php?page=" . PLUGIN_BASENAME?>'>activate tab</a>.</red><p>
+				<?php } ?>
+				<p>Select where you'd like the FunCaptcha to appear.</p>
+				<fieldset>
+					<label>Show FunCaptcha on:</label>
+					<input type="hidden" name="funcaptcha[register_form]" value="0" />
+					<p><input type='checkbox' name='funcaptcha[register_form]' value='1' <?php echo ( $funcaptcha_options['register_form'] ) ? 'checked' : ''; ?> /> Registration</p>
+					<input type="hidden" name="funcaptcha[password_form]" value="0" />
+					<p><input type='checkbox' name='funcaptcha[password_form]' value='1' <?php echo ( $funcaptcha_options['password_form'] ) ? 'checked' : ''; ?> /> Lost Password</p>
+					<input type="hidden" name="funcaptcha[comment_form]" value="0" />
+					<p><input type='checkbox' name='funcaptcha[comment_form]' value='1' <?php echo ( $funcaptcha_options['comment_form'] ) ? 'checked' : ''; ?> /> Comments</p>
+				</fieldset>
+				<fieldset>
+					<label>Hide from logged in users?</label>
+					<input type="hidden" name="funcaptcha[hide_users]" value="0" />
+					<p><input type='checkbox' name='funcaptcha[hide_users]' value='1' <?php echo ( $funcaptcha_options['hide_users'] ) ? 'checked' : ''; ?> /> Yes</p>
+				</fieldset>
+				<fieldset>
+					<label>Error message:</label>
+					<p>This message appears if your users do not complete the FunCaptcha correctly.</p>
+					<textarea rows="4" cols="50" name='funcaptcha[error_message]' /><?php echo $funcaptcha_options['error_message'] ? htmlentities($funcaptcha_options['error_message']) : $funcaptcha_Default; ?></textarea>
+				</fieldset>
+				<?php if (CF7_INSTALLED) { ?>
+				<fieldset>
+					<label>Contact Form 7 Support:</label>
+					<p>This will enable FunCaptcha support for Contact Form 7. (Please ensure you don't display a Contact Form 7 containing a FunCaptcha on a page which already has FunCaptcha, such as a registration or comments page. See our <a href="https://swipeads.co/faqs" target="_blank">website</a> for details.)</p>
+					<input type="hidden" name="funcaptcha[cf7_support]" value="0" />
+					<p><input type='checkbox' name='funcaptcha[cf7_support]' value='1' <?php echo ( $funcaptcha_options['cf7_support'] ) ? 'checked' : ''; ?> /> Enable</p>
+				</fieldset>
+				<?php } ?>			
+				<fieldset>
+					<input type='hidden' name='funcaptcha[action]' value='<?php echo $action; ?>' />
+					<input type='hidden' name='funcaptcha[type]' value='Settings' />
+					<button type='submit' class='button-primary'>Save FunCaptcha settings</button>
+				</fieldset>
+			</form>
+		</div>
+	</div>	
+	<div class='funcaptcha-box'>
+		<div class='inside'>
+			<h2 class="settings-title">Support</h2>
+			<p>If you're having trouble getting FunCaptcha to work, please <a href="https://swipeads.co/contact-us" target="_blank">contact us</a> and we'll get back to you.</p>
+		</div>
+	</div>
+</div>
+
+ <p class="copyright">&copy; Copyright <?php echo date("Y"); ?> <a href="https://swipeads.co/">SwipeAds</a>. Version <?php echo FUNCAPTCHA_VERSION ?> </p>
