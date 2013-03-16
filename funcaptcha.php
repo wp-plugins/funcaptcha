@@ -31,7 +31,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wp";
-	protected $funcaptcha_plugin_version = "0.2.1";
+	protected $funcaptcha_plugin_version = "0.2.2";
 
 	protected $session_token;
 
@@ -170,6 +170,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected function doPostReturnObject($url_path, $data) {
 		$result = "";
 		$fields_string = "";
+		$data_string = "";
 		foreach($data as $key=>$value) {
 			if (is_array($value)) {
 				if ( ! empty($value)) {
