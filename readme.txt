@@ -25,11 +25,22 @@ You can view instructions with images at [our site](https://swipeads.co/setup/).
 
 = Install the Plugin =
 
-1. Log in to your Wordpress blog as the administrator
-1. Navigate to Plugins -> Add New
-1. Enter "FunCaptcha" in the search box
-1. Click "Install Now"
-1. Once installation has completed, click the "Activate Plugin" link
+There is two methods to install FunCaptcha.
+
+Method one is by downloading the plugin from here and following these steps:
+1. Upload captcha folder to the /wp-content/plugins/ directory.
+1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Plugin settings are located in 'Plugin', 'FunCaptcha'.
+
+Method two is by downloading it directly from your Wordpress dashboard by following these steps:
+1. Log in to your Wordpress blog as the administrator.
+1. Navigate to Plugins -> Add New.
+1. Enter "FunCaptcha" in the search box.
+1. Click "Install Now".
+1. Once installation has completed, click the "Activate Plugin" link.
+1. Plugin settings are located in 'Plugin', 'FunCaptcha'.
+
+In both cases it will warn you of needing to setup and activate FunCaptcha, which you can do directly from within the plugin.
 
 = Configure the Plugin =
 
