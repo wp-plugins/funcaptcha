@@ -29,7 +29,7 @@ There is two methods to install FunCaptcha.
 
 Method one is by downloading the plugin from here and following these steps:
 
-1. Upload captcha folder to the /wp-content/plugins/ directory.
+1. Upload funcaptcha folder to the /wp-content/plugins/ directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Plugin settings are located in 'Plugin', 'FunCaptcha'.
 
