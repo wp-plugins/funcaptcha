@@ -53,7 +53,7 @@ In both cases it will warn you of needing to setup and activate FunCaptcha, whic
 
 == Frequently Asked Questions ==
 
-= How can I try it out? =
+= How can I try out your CAPTCHA? =
 Try [a demo](https://swipeads.co/) of FunCaptcha on our site.
 
 = Does FunCaptcha work on mobile and all other platforms? =
