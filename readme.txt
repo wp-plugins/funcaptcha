@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, Simple CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, security CAPTCHA, CAPTCHA lock, CAPTCHA key, spam-proof CAPTCHA, spam CAPTCHA, engaging CAPTCHA, dynamic CAPTCHA, CAPTCHA block, no-spam CAPTCHA, no-bot CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA
 Requires at least: 2.8.0
 Tested up to: 3.5.1
-Stable tag: 0.2.2
+Stable tag: 0.3.0
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7.
 
@@ -74,6 +74,15 @@ Most CAPTCHAs require the user to read and type in text. The text must be hard t
 = What is FunCaptcha? =
 FunCaptcha is a CAPTCHA that presents a mini-game that blocks the bots while giving your users a few moments of fun. It’s a real security solution, hardened by experts and automatically updated to provide the best protection. Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices. Visually impaired users can complete an audio challenge.
 
+= What does 'security level' mean? =
+By default, FunCaptcha's security level is Automatic, and you don't need to do a thing. But here are some details if you want to know what's going on under the hood.
+
+If the security level is Automatic, security starts at the lowest, Standard level. That means that users do fewer challenges, but spambots also have less work to do to guess their way past the challenge. For most sites, this is fine. Most people will only need to solve two challenges, and almost no spambots will get through. The security level rises and falls automatically, adjusted by FunCaptcha's monitoring system. If our system suspects that a user is a spambot, the security level for that user automatically rises to Enhanced level, described below.
+
+The Enhanced security level makes users do a few more challenges. It's still easy and quick for humans, but becomes much harder for spambots to get through. No spambot that we see attacking our many sites is capable of getting through the Enhanced level.
+
+As a site publisher, you start off at the Automatic security level, which is probably your best option, so you don't need to do a thing. However, if you wish, you can adjust your settings so security remains always at a particular elevated level, and won't adjust automatically. For example, you can assure that all of your users (and all spambots!) will always play at the Enhanced security level. You can change this setting for any domain listed on your account page at [SwipeAds.co](https://swipeads.co/). If you use our WordPress plugin, you can also use the plugin settings page. (If these two places don't have the same security setting, the more elevated setting of the two will prevail.)
+
 = FunCaptcha does not appear for me =
 We have noticed a few of our users are using the JetPack plugin, which currently does not support showing a CAPTCHA by third parties. You can disable the JetPack comment addon from your dashboard and it will work fine. There may be other plugins that cause our CAPTCHA to not appear. We recommend you note down any type of comment or registration plugins before you contact us to help us better assist you. If you have any other CAPTCHA plugins, please disable those as well.
 
@@ -118,6 +127,9 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 4. Admin Page
 
 == Changelog ==
+
+= 0.3.0 =
+* Adjustable security setting. You can now choose between Automatic and Enhanced security. If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. Please read more at our [FAQ](https://swipeads.co/faqs)
 
 = 0.2.2 =
 * Gravity Forms support. You can now use FunCaptcha in any Gravity Forms, using the advanced field elements.

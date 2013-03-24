@@ -33,6 +33,14 @@
 					<p><input type='checkbox' name='funcaptcha[hide_users]' value='1' <?php echo ( $funcaptcha_options['hide_users'] ) ? 'checked' : ''; ?> /> Yes</p>
 				</fieldset>
 				<fieldset>
+					<label>Security level:</label>
+					<p>If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. For more information, see our <a href="https://swipeads.co/faqs/" target="_blank">FAQ</a>.</p>
+					<select name="funcaptcha[security_level]" value="security_level">
+						<option value="0" <?php if ($funcaptcha_options['security_level'] == 0) { echo 'selected="selected"'; } else { ''; };?>>Automatic</option>
+						<option value="20" <?php if ($funcaptcha_options['security_level'] == 20) { echo 'selected="selected"'; } else { ''; };?>>Always Enhanced</option>
+					</select>
+				</fieldset>
+				<fieldset>
 					<label>Error message:</label>
 					<p>This message appears if your users do not complete the FunCaptcha correctly.</p>
 					<textarea rows="4" cols="50" name='funcaptcha[error_message]' /><?php echo $funcaptcha_options['error_message'] ? htmlentities($funcaptcha_options['error_message']) : $funcaptcha_Default; ?></textarea>

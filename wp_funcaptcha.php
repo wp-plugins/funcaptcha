@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.2.2
+ * @version 0.3.0
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: https://swipeads.co/
-Version: 0.2.2
+Version: 0.3.0
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.2.2');
+define('FUNCAPTCHA_VERSION', '0.3.0');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -182,8 +182,11 @@ function funcaptcha_login_styles() {
 *
 * @return object funcaptcha object
 */
-function funcaptcha_API() { 
-    return new FUNCAPTCHA();
+function funcaptcha_API() {
+    $fc = new FUNCAPTCHA();
+    $options = funcaptcha_get_settings();
+    $fc->setSecurityLevel($options['security_level']);
+    return $fc;
 }
 
 /**
@@ -413,6 +416,7 @@ function funcaptcha_set_options($options) {
                                 'password_form',
                                 'comment_form',
                                 'hide_users',
+                                'security_level',
                                 'error_message',
                                 'cf7_support');
 
@@ -448,6 +452,7 @@ function funcaptcha_get_settings() {
         'password_form' => true,
         'comment_form' => true,
         'hide_users' => false,
+        'security_level' => 0,
         'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.'
     );
 
@@ -504,6 +509,7 @@ function funcaptcha_get_settings_post() {
                                 'password_form',
                                 'comment_form',
                                 'hide_users',
+                                'security_level',
                                 'error_message',
                                 'cf7_support');
 
@@ -524,6 +530,7 @@ function funcaptcha_get_settings_post() {
         'password_form' => '',
         'comment_form' => '',
         'hide_users' => '',
+        'security_level' => 0,
         'cf7_support' => '',
         'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.'
         );

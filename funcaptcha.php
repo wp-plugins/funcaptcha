@@ -3,7 +3,7 @@
  * FunCaptcha
  * PHP Integration Library
  *
- * @version 0.0.3
+ * @version 0.0.4
  *
  * Copyright (c) 2013 SwipeAds -- https://www.swipeads.co
  * AUTHOR:
@@ -31,11 +31,11 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wp";
-	protected $funcaptcha_plugin_version = "0.2.2";
-
+	protected $funcaptcha_plugin_version = "0.3.0";
+	protected $funcaptcha_security_level = 0;
 	protected $session_token;
 
-	protected $version = '0.0.3';
+	protected $version = '0.0.4';
 
 	/**
 	 * Constructor
@@ -82,7 +82,8 @@ if ( ! class_exists('FUNCAPTCHA')):
 			'userip'	 		=> $_SERVER["REMOTE_ADDR"],
 			'userbrowser'		=> $_SERVER['HTTP_USER_AGENT'],
 			'api_type'			=> $this->funcaptcha_api_type,
-			'plugin_version'	=> $this->funcaptcha_plugin_version
+			'plugin_version'	=> $this->funcaptcha_plugin_version,
+			'security_level'	=> $this->funcaptcha_security_level
 		);
 
 		//get session token.
@@ -124,6 +125,23 @@ if ( ! class_exists('FUNCAPTCHA')):
 			$message = "Unable to load the <i>SwipeAds</i> FunCaptcha.  Please contact the site owner to report the problem.";
 			echo "<p style=\"$style\">$message</p>\n";
 		}
+	}
+
+	/**
+	 * Set security level of FunCaptcha
+	 *
+	 * Possible options are:
+	 * 0 - Automatic-- security rises for suspicious users
+	 * 20 - Enhanced security-- always use Enhanced security
+	 *
+	 * See our website for more details on these options
+	 *
+	 * @param int $security - Security level
+	 * @return boolean
+	 */
+	public function setSecurityLevel($security) {
+		$this->funcaptcha_security_level = $security;
+		$this->msgLog("DEBUG", "Security Level: '$this->funcaptcha_public_key'");
 	}
 
 	/**
@@ -191,7 +209,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 		$curl_url.= $url_path;
 
 		// Log it.
-		$this->msgLog("DEBUG", "Using cURl: url='$curl_url', data='$data_string'");
+		$this->msgLog("DEBUG", "cURl: url='$curl_url', data='$data_string'");
 
 		// Initialize cURL session.
 		if ($ch = curl_init($curl_url))
@@ -215,6 +233,20 @@ if ( ! class_exists('FUNCAPTCHA')):
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Determine whether or not cURL is available to use.
+	 *
+	 * @return boolean
+	 */
+	protected function can_use_curl()
+	{
+		if (function_exists('curl_init') and function_exists('curl_exec'))
+		{
+			return TRUE;
+		}
+		return FALSE;
 	}
 
 	/**
