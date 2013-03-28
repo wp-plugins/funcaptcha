@@ -1,6 +1,6 @@
 === FunCaptcha - game CAPTCHA ===
 Contributors: swipeads
-Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, Simple CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, security CAPTCHA, CAPTCHA lock, CAPTCHA key, spam-proof CAPTCHA, spam CAPTCHA, engaging CAPTCHA, dynamic CAPTCHA, CAPTCHA block, no-spam CAPTCHA, no-bot CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA
+Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, Simple CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, security CAPTCHA, CAPTCHA lock, CAPTCHA key, spam-proof CAPTCHA, spam CAPTCHA, engaging CAPTCHA, dynamic CAPTCHA, CAPTCHA block, no-spam CAPTCHA, no-bot CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA, comment CAPTCHA, comment protection, comment spam, spam CAPTCHA
 Requires at least: 2.8.0
 Tested up to: 3.5.1
 Stable tag: 0.3.0
@@ -111,10 +111,13 @@ Our CAPTCHA currently only supports being displayed once on the same page, so pl
 Yes, you can get those using the same account at our [website](https://swipeads.co/). Please login with the same account you're currently using for your wordpress site.
 
 = Can I customize your CAPTCHA? =
-We are rapidly updating and adding features to both our Wordpress plugin and our core technology platform, in future we will offer new ways for you to display the CAPTCHA to better match your website as well as improve security if you need.
+We are rapidly updating and adding features to both our Wordpress plugin and our core technology platform, in future we will offer new ways for you to display the CAPTCHA to better match your website.
 
 = What do the stars do? =
 You earn stars as you complete FunCaptchas anywhere on the web. The faster you complete the CAPTCHA challenge, the more stars you get. Gettng 5 stars means you play the games as well as we, the creators, do– and we have lots of practice! Unless you are using a “cookie blocker” or a “do not track” function on your browser, your star count will keep increasing each time you play. Once you reach 100 stars, you will get a special reward. The reward is not implemented yet but stay tuned, and keep honing your FunCaptcha skills!
+
+= I'd like a certain feature or a way to make it fit the theme of my site better, is there anything I can do? =
+Please contact us on the support forums if you have any ideas on how to improve our CAPTCHA, or if you need some help making it position better in the layout of your site. You can also contact us on our [site](https://swipeads.co/contact-us/).
 
 = Other questions? =
 For a full list of frequently asked questions, please see our [FAQ page](https://swipeads.co/faqs).
