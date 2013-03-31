@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, Simple CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, security CAPTCHA, CAPTCHA lock, CAPTCHA key, spam-proof CAPTCHA, spam CAPTCHA, engaging CAPTCHA, dynamic CAPTCHA, CAPTCHA block, no-spam CAPTCHA, no-bot CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA, comment CAPTCHA, comment protection, comment spam, spam CAPTCHA, quick CAPTCHA
 Requires at least: 2.8.0
 Tested up to: 3.5.1
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7.
 
@@ -130,6 +130,9 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 4. Admin Page
 
 == Changelog ==
+
+= 0.3.1 =
+* Can now adjust the alignment of FunCaptcha, left, right or centered.
 
 = 0.3.0 =
 * Adjustable security setting. You can now choose between Automatic and Enhanced security. If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. Please read more at our [FAQ](https://swipeads.co/faqs)

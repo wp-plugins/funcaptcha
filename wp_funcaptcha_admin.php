@@ -45,6 +45,15 @@
 					<p>This message appears if your users do not complete the FunCaptcha correctly.</p>
 					<textarea rows="4" cols="50" name='funcaptcha[error_message]' /><?php echo $funcaptcha_options['error_message'] ? htmlentities($funcaptcha_options['error_message']) : $funcaptcha_Default; ?></textarea>
 				</fieldset>
+				<fieldset>
+					<label>FunCaptcha alignment:</label>
+					<p>You can change the alignment of FunCaptcha on your page, this applies for all instances of FunCaptcha.</p>
+					<select name="funcaptcha[align]" value="align">
+						<option value="left" <?php if ($funcaptcha_options['align'] == 'left') { echo 'selected="selected"'; } else { ''; };?>>Left</option>
+						<option value="right" <?php if ($funcaptcha_options['align'] == 'right') { echo 'selected="selected"'; } else { ''; };?>>Right</option>
+						<option value="center" <?php if ($funcaptcha_options['align'] == 'center') { echo 'selected="selected"'; } else { ''; };?>>Center</option>
+					</select>
+				</fieldset>
 				<?php if (CF7_INSTALLED) { ?>
 				<fieldset>
 					<label>Contact Form 7 Support:</label>

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.0
+ * @version 0.3.1
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: https://swipeads.co/
-Version: 0.3.0
+Version: 0.3.1
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.0');
+define('FUNCAPTCHA_VERSION', '0.3.1');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -418,6 +418,7 @@ function funcaptcha_set_options($options) {
                                 'hide_users',
                                 'security_level',
                                 'error_message',
+                                'align',
                                 'cf7_support');
 
     $new_options = array();
@@ -453,7 +454,8 @@ function funcaptcha_get_settings() {
         'comment_form' => true,
         'hide_users' => false,
         'security_level' => 0,
-        'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.'
+        'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.',
+        'align' => 'left'
     );
 
     if ( 1 == $wpmu ){
@@ -511,6 +513,7 @@ function funcaptcha_get_settings_post() {
                                 'hide_users',
                                 'security_level',
                                 'error_message',
+                                'align',
                                 'cf7_support');
 
     $new_options = array();
@@ -532,7 +535,8 @@ function funcaptcha_get_settings_post() {
         'hide_users' => '',
         'security_level' => 0,
         'cf7_support' => '',
-        'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.'
+        'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.',
+        'align' => 'left'
         );
 
     return wp_parse_args( $funcaptcha_post, $defaults );
@@ -546,7 +550,7 @@ function funcaptcha_get_settings_post() {
 function funcaptcha_resize_mobile() {
      $script =   "<script type='text/javascript'>
                     var divSize = document.getElementById('funcaptcha-wrapper').offsetWidth;
-                    if (divSize < 300) {
+                    if (divSize < 310) {
                         var css = '#FunCaptcha iframe {width: 100% !important;zoom: 0.99;-o-transform: scale(0.99);-o-transform-origin: 0 0;-webkit-transform: scale(0.99, 0.98);-moz-transform: scale(0.99, 0.98);transform: scale(0.99, 0.98);-moz-transform-origin:0 0;-webkit-transform-origin:0 0;transform-origin:0 0;z-index:90;}',
                         head = document.getElementsByTagName('head')[0],
                         style = document.createElement('style');
@@ -615,7 +619,19 @@ function funcaptcha_comment_form() {
     $funcaptcha = funcaptcha_API();
     $html = $funcaptcha->getFunCaptcha($options['public_key']);
     
-    echo "<div id='funcaptcha-wrapper'>" . $html .  "</div>";
+    switch ($options['align']) {
+        case "left" :
+            $style = "text-align: left;";
+        break; 
+        case "right" :
+            $style = "text-align: right;";
+        break;
+        case "center" :
+            $style = "text-align: center;";
+        break;
+    }
+
+    echo "<div id='funcaptcha-wrapper' style='" . $style . "'>" . $html .  "</div>";
     echo funcaptcha_rearrange_elements("submit");
     echo funcaptcha_resize_mobile();
 
@@ -666,7 +682,19 @@ function funcaptcha_register_form() {
     
     $funcaptcha = funcaptcha_API();
     $html = $funcaptcha->getFunCaptcha($options['public_key']);
-    echo "<div id='funcaptcha-wrapper'>" . $html .  "</div>";
+    switch ($options['align']) {
+        case "left" :
+            $style = "text-align: left;";
+        break; 
+        case "right" :
+            $style = "text-align: right;";
+        break;
+        case "center" :
+            $style = "text-align: center;";
+        break;
+    }
+
+    echo "<div id='funcaptcha-wrapper' style='" . $style . "'>" . $html .  "</div>";
     echo funcaptcha_resize_mobile();
     return true;
 }
@@ -683,7 +711,18 @@ function funcaptcha_register_form_bp() {
     
     $funcaptcha = funcaptcha_API();
     $html = $funcaptcha->getFunCaptcha($options['public_key']);
-    echo "<div id='funcaptcha-wrapper'>" . $html .  "</div>";
+    switch ($options['align']) {
+        case "left" :
+            $style = "text-align: left;";
+        break; 
+        case "right" :
+            $style = "text-align: right;";
+        break;
+        case "center" :
+            $style = "text-align: center;";
+        break;
+    }
+    echo "<div id='funcaptcha-wrapper' style='" . $style . "'>" . $html .  "</div>";
     echo funcaptcha_resize_mobile();
     return true;
 }
