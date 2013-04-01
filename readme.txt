@@ -113,6 +113,9 @@ Yes, you can get those using the same account at our [website](https://swipeads.
 = Can I customize your CAPTCHA? =
 We are rapidly updating and adding features to both our Wordpress plugin and our core technology platform, in future we will offer new ways for you to display the CAPTCHA to better match your website.
 
+= Can I reposition the CAPTCHA? =
+You can change how you'd like to align FunCaptcha in our settings to better match your websites layout. This works on your comment forms, lost password and registration forms, as well as Contact Form 7, BuddyPress and our Gravity Form addons.
+
 = What do the stars do? =
 You earn stars as you complete FunCaptchas anywhere on the web. The faster you complete the CAPTCHA challenge, the more stars you get. Gettng 5 stars means you play the games as well as we, the creators, do– and we have lots of practice! Unless you are using a “cookie blocker” or a “do not track” function on your browser, your star count will keep increasing each time you play. Once you reach 100 stars, you will get a special reward. The reward is not implemented yet but stay tuned, and keep honing your FunCaptcha skills!
 
