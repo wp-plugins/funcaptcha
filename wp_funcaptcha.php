@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.1
+ * @version 0.3.2
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: https://swipeads.co/
-Version: 0.3.1
+Version: 0.3.2
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.1');
+define('FUNCAPTCHA_VERSION', '0.3.2');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -22,8 +22,6 @@ require_once(PLUGIN_PATH . "addons/wp_funcaptcha_cf7.php");
 require_once(PLUGIN_PATH . "addons/wp_funcaptcha_gf.php");
 
 add_filters_actions();
-
-//BP_INSTALLED
 
 /**
 * Added wordpress filters for funcaptcha
@@ -51,39 +49,43 @@ function funcaptcha_init() {
 
     $funcaptcha_options = funcaptcha_get_settings();
 
-    //if comment_form is set in the options, attach to the comment hooks
-    if( $funcaptcha_options['comment_form'] ) {
-        add_action('comment_form', 'funcaptcha_comment_form');
-        add_filter('preprocess_comment', 'funcaptcha_comment_post', 10, 1);
-    }
-    
-    // If register_form is set in the options, attach to the register hooks
-    if( $funcaptcha_options['register_form'] ) {
-        if (BP_INSTALLED) {
-            add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
-            add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
-        } else {
-            add_action('register_form', 'funcaptcha_register_form');
-            add_action('register_post', 'funcaptcha_register_post', 10, 3);
+    //if keys are added, then add hooks.
+    if (!funcaptcha_is_key_missing()) {
+        //if comment_form is set in the options, attach to the comment hooks
+        if( $funcaptcha_options['comment_form'] ) {
+            add_action('comment_form', 'funcaptcha_comment_form');
+            add_filter('preprocess_comment', 'funcaptcha_comment_post', 10, 1);
         }
         
-    }
-
-    // If password_form is set in the options, attach to the lost password hooks    
-    if( $funcaptcha_options['password_form'] ) {
-        add_action('lostpassword_form', 'funcaptcha_lost_password_form');
-        add_action('lostpassword_post', 'funcaptcha_lost_password_post');
-    }
-
-    // Registers the funcaptcha CF7 Actions if plugin is activated
-    if( $funcaptcha_options['cf7_support'] ) {
-        if (CF7_INSTALLED) {
-            funcaptcha_register_cf7_actions();
+        // If register_form is set in the options, attach to the register hooks
+        if( $funcaptcha_options['register_form'] ) {
+            if (BP_INSTALLED) {
+                add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
+                add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
+            } else {
+                add_action('register_form', 'funcaptcha_register_form');
+                add_action('register_post', 'funcaptcha_register_post', 10, 3);
+            }
+            
         }
-    }
 
-    if (GF_DETECTED) {
-       funcaptcha_register_gf_actions();
+        // If password_form is set in the options, attach to the lost password hooks    
+        if( $funcaptcha_options['password_form'] ) {
+            add_action('lostpassword_form', 'funcaptcha_lost_password_form');
+            add_action('lostpassword_post', 'funcaptcha_lost_password_post');
+        }
+
+        // Registers the funcaptcha CF7 Actions if plugin is activated
+        if( $funcaptcha_options['cf7_support'] ) {
+            if (CF7_INSTALLED) {
+                funcaptcha_register_cf7_actions();
+            }
+        }
+
+        if (GF_DETECTED) {
+           funcaptcha_register_gf_actions();
+        }
+
     }
 
 }
