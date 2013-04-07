@@ -106,7 +106,6 @@ FunCaptcha supports being displayed as a CAPTCHA for Gravity Forms using the adv
 Our CAPTCHA has full support for Buddypress and can be included on any Buddypress website. It will automatically work on any Buddypress registration forms and on any other location our CAPTCHA is enabled for.
 
 = I'm using your CAPTCHA on a page with both a Form and a comment box, and it only appears once? =
-
 Our CAPTCHA currently only supports being displayed once on the same page, so please only show it in a form if there is no comments on the same page.
 
 = If I want to use your CAPTCHA on another site, do I need new keys? =
