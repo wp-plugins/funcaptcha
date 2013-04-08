@@ -23,7 +23,7 @@ Learn more, give feedback, and ask questions at our website. Our epic battle aga
 
 [youtube http://www.youtube.com/watch?v=1XNEmuAwp7E]
 
-You can view instructions with images at [our site](https://swipeads.co/setup/).
+You can view instructions with images at [our site](https://swipeads.co/setup/) or watch the above video.
 
 = Install the Plugin =
 
