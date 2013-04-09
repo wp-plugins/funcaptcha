@@ -121,7 +121,7 @@ You can change how you'd like to align FunCaptcha in our settings to better matc
 You earn stars as you complete FunCaptchas anywhere on the web. The faster you complete the CAPTCHA challenge, the more stars you get. Gettng 5 stars means you play the games as well as we, the creators, do– and we have lots of practice! Unless you are using a “cookie blocker” or a “do not track” function on your browser, your star count will keep increasing each time you play. Once you reach 100 stars, you will get a special reward. The reward is not implemented yet but stay tuned, and keep honing your FunCaptcha skills!
 
 = I'd like a certain feature or a way to make it fit the theme of my site better, is there anything I can do? =
-Please contact us on the support forums if you have any ideas on how to improve our CAPTCHA, or if you need some help making it position better in the layout of your site. You can also contact us on our [site](https://swipeads.co/contact-us/).
+Please contact us on the support forums if you have any ideas on how to improve our CAPTCHA. You can also contact us on our [site](https://swipeads.co/contact-us/).
 
 = Other questions? =
 For a full list of frequently asked questions, please see our [FAQ page](https://swipeads.co/faqs).
