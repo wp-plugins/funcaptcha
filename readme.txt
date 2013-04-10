@@ -89,7 +89,7 @@ As a site publisher, you start off at the Automatic security level, which is pro
 We have noticed a few of our users are using the JetPack plugin, which currently does not support showing a CAPTCHA by third parties. You can disable the JetPack comment addon from your dashboard and it will work fine. There may be other plugins that cause our CAPTCHA to not appear. We recommend you note down any type of comment or registration plugins before you contact us to help us better assist you. If you have any other CAPTCHA plugins, please disable those as well.
 
 = FunCaptcha shows an error message =
-This error message will only appear if you have not correctly added your private and public keys to the settings panel in your wordpress admin dashboard. Our CAPTCHA requires these to properly secure your website.
+This error message will only appear if you have not correctly added your private and public keys to the settings panel in your wordpress admin dashboard. Our CAPTCHA requires these to properly secure your website. If you contiune to see the error message even after entering correct keys, you may have a plugin that prevents external communication to our servers, such as "wp protection", please disable those as well.
 
 = I'm using the Contact Form 7 plugin. Can I use your CAPTCHA to protect my form? =
 Absolutely. You can enable our CAPTCHA for Contact Form 7 in the settings of FunCaptcha.
