@@ -65,6 +65,7 @@
 				<fieldset>
 					<input type='hidden' name='funcaptcha[action]' value='<?php echo $action; ?>' />
 					<input type='hidden' name='funcaptcha[type]' value='Settings' />
+					<input type="hidden" name="wpnonce" value="<?= $nonce ?>"></input>
 					<button type='submit' class='button-primary'>Save FunCaptcha settings</button>
 				</fieldset>
 			</form>

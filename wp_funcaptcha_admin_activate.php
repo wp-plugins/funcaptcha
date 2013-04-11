@@ -44,12 +44,13 @@
 				<fieldset>
 					<input type='hidden' name='funcaptcha[action]' value='<?php echo $action; ?>' />
 					<input type='hidden' name='funcaptcha[type]' value='Activate' />
+					<input type="hidden" name="wpnonce" value="<?= $nonce ?>"></input>
 					<button type='submit' class='button-primary'>Save my keys</button>
 				</fieldset>
 				<fieldset>
 					<label>Register:</label>
 					<iframe id="reg-fc" style="margin-bottom: 15px;" class="register-frame" src="https://swipeads.co/wp-fc-register/" scrolling="no" frameBorder="0" height="450px;" width="400px"></iframe>
-					<p>You can also register or login at our <a href="https:swipeads.co/" target="_blank">website</a>.</p>
+					<p>You can also register or login at our <a href="https://swipeads.co/" target="_blank">website</a>.</p>
 				</fieldset>
 			</form>
 		</div>
