@@ -136,7 +136,7 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 == Changelog ==
 
 = 0.3.3 =
-* Patches CSRF vulnerability in the settings panel.
+* Patches CSRF vulnerability in the settings panel that was created in last update.
 
 = 0.3.2 =
 * FunCaptcha will no longer show the error message or prevent comments until you have inserted activation keys.
