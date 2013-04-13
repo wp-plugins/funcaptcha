@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.3
+ * @version 0.3.4
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: https://swipeads.co/
-Version: 0.3.3
+Version: 0.3.4
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.3');
+define('FUNCAPTCHA_VERSION', '0.3.4');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -120,11 +120,12 @@ function funcaptcha_addons() {
     require_once(ABSPATH . 'wp-admin/includes/plugin.php');
     define('CF7_INSTALLED', is_plugin_active('contact-form-7/wp-contact-form-7.php'));
     define('BP_INSTALLED', is_plugin_active('buddypress/bp-loader.php'));
-    define('GF_DETECTED', is_plugin_active('gravityforms/gravityforms.php'));
+    define('GF_DETECTED', is_plugin_active('gravityforms/gravityforms.php'));    
 }
 
-if (function_exists('bp_is_register_page'))
+if (function_exists('bp_is_register_page')) { 
     $is_buddypress = true;
+}
 
 /**
 * setup funcaptcha settings url

@@ -16,7 +16,18 @@
 			<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-settings'>
 				<?php if (funcaptcha_is_key_missing()) { ?>
 					<p style="color:red">To activate this plugin, you need to supply access keys. You can do that on the <a href='<?php echo "plugins.php?page=" . PLUGIN_BASENAME?>'>activate tab</a>.</red><p>
-				<?php } ?>
+				<?php }
+				if (is_plugin_active('jetpack/jetpack.php')) {
+			        if (Jetpack::is_active()) {
+			            $jp_active = Jetpack::get_active_modules();
+			            if (in_array('comments', $jp_active)) {
+			                ?>
+								<p style="color:red">Warning: The plugin JetPack Comments has been detected. This will prevent FunCaptcha from working. You can disable JetPack Comments from the JetPack configuration page.<p>
+							<?php 
+						}
+			        }
+			    }
+				?>
 				<p>Select where you'd like the FunCaptcha to appear.</p>
 				<fieldset>
 					<label>Show FunCaptcha on:</label>
