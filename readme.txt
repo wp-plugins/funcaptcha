@@ -76,15 +76,6 @@ Most CAPTCHAs require the user to read and type in text. The text must be hard t
 = What is FunCaptcha? =
 FunCaptcha is a CAPTCHA that presents a mini-game that blocks the bots while giving your users a few moments of fun. It’s a real security solution, hardened by experts and automatically updated to provide the best protection. Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices. Visually impaired users can complete an audio challenge.
 
-= What does 'security level' mean? =
-By default, FunCaptcha's security level is Automatic, and you don't need to do a thing. But here are some details if you want to know what's going on under the hood.
-
-If the security level is Automatic, security starts at the lowest, Standard level. That means that users do fewer challenges, but spambots also have less work to do to guess their way past the challenge. For most sites, this is fine. Most people will only need to solve two challenges, and almost no spambots will get through. The security level rises and falls automatically, adjusted by FunCaptcha's monitoring system. If our system suspects that a user is a spambot, the security level for that user automatically rises to Enhanced level, described below.
-
-The Enhanced security level makes users do a few more challenges. It's still easy and quick for humans, but becomes much harder for spambots to get through. No spambot that we see attacking our many sites is capable of getting through the Enhanced level.
-
-As a site publisher, you start off at the Automatic security level, which is probably your best option, so you don't need to do a thing. However, if you wish, you can adjust your settings so security remains always at a particular elevated level, and won't adjust automatically. For example, you can assure that all of your users (and all spambots!) will always play at the Enhanced security level. You can change this setting for any domain listed on your account page at [SwipeAds.co](https://swipeads.co/). If you use our WordPress plugin, you can also use the plugin settings page. (If these two places don't have the same security setting, the more elevated setting of the two will prevail.)
-
 = FunCaptcha does not appear for me =
 We have noticed a few of our users are using the JetPack plugin, which currently does not support showing a CAPTCHA by third parties. You can disable the JetPack comment addon from your dashboard and it will work fine. There may be other plugins that cause our CAPTCHA to not appear. We recommend you note down any type of comment or registration plugins before you contact us to help us better assist you. If you have any other CAPTCHA plugins, please disable those as well.
 
@@ -116,6 +107,15 @@ We are rapidly updating and adding features to both our Wordpress plugin and our
 
 = Can I reposition the CAPTCHA? =
 You can change how you'd like to align FunCaptcha in our settings to better match your websites layout. This works on your comment forms, lost password and registration forms, as well as Contact Form 7, BuddyPress and our Gravity Form addons.
+
+= What does 'security level' mean? =
+By default, FunCaptcha's security level is Automatic, and you don't need to do a thing. But here are some details if you want to know what's going on under the hood.
+
+If the security level is Automatic, security starts at the lowest, Standard level. That means that users do fewer challenges, but spambots also have less work to do to guess their way past the challenge. For most sites, this is fine. Most people will only need to solve two challenges, and almost no spambots will get through. The security level rises and falls automatically, adjusted by FunCaptcha's monitoring system. If our system suspects that a user is a spambot, the security level for that user automatically rises to Enhanced level, described below.
+
+The Enhanced security level makes users do a few more challenges. It's still easy and quick for humans, but becomes much harder for spambots to get through. No spambot that we see attacking our many sites is capable of getting through the Enhanced level.
+
+As a site publisher, you start off at the Automatic security level, which is probably your best option, so you don't need to do a thing. However, if you wish, you can adjust your settings so security remains always at a particular elevated level, and won't adjust automatically. For example, you can assure that all of your users (and all spambots!) will always play at the Enhanced security level. You can change this setting for any domain listed on your account page at [SwipeAds.co](https://swipeads.co/). If you use our WordPress plugin, you can also use the plugin settings page. (If these two places don't have the same security setting, the more elevated setting of the two will prevail.)
 
 = What do the stars do? =
 You earn stars as you complete FunCaptchas anywhere on the web. The faster you complete the CAPTCHA challenge, the more stars you get. Gettng 5 stars means you play the games as well as we, the creators, do– and we have lots of practice! Unless you are using a “cookie blocker” or a “do not track” function on your browser, your star count will keep increasing each time you play. Once you reach 100 stars, you will get a special reward. The reward is not implemented yet but stay tuned, and keep honing your FunCaptcha skills!
