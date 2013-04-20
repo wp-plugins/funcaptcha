@@ -44,7 +44,7 @@
 				<fieldset>
 					<input type='hidden' name='funcaptcha[action]' value='<?php echo $action; ?>' />
 					<input type='hidden' name='funcaptcha[type]' value='Activate' />
-					<input type="hidden" name="wpnonce" value="<?= $nonce ?>"></input>
+					<?php wp_nonce_field( 'fc_nonce','fc-nonce' ); ?>
 					<button type='submit' class='button-primary'>Save my keys</button>
 				</fieldset>
 				<fieldset>

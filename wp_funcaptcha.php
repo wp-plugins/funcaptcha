@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.4
+ * @version 0.3.5
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: https://swipeads.co/
-Version: 0.3.4
+Version: 0.3.5
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.4');
+define('FUNCAPTCHA_VERSION', '0.3.5');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -201,6 +201,11 @@ function funcaptcha_show_settings() {
     
     $funcaptcha_options = funcaptcha_get_settings();
     $action = ( isset( $_POST['funcaptcha']['action'] ) ) ? $_POST['funcaptcha']['action'] : '';
+    if ($action) {
+        if ( ! current_user_can('activate_plugins') ) {
+            die("Unauthorized to change settings. User is not an allowed to change plugin.");
+        }
+    }
     switch ( $action ) {
         case 'install':
             funcaptcha_install_plugin();
@@ -254,9 +259,6 @@ function funcaptcha_show_settings() {
     } else if (!$_POST['funcaptcha-page']) {
         $_POST['funcaptcha-page'] = "Settings";
     }
-
-    //create nonce
-    $nonce= wp_create_nonce('my-nonce');
 
     switch ($_POST['funcaptcha-page']) {
         case "Settings" :
@@ -508,8 +510,8 @@ function funcaptcha_upto_date($install_version) {
 */
 function funcaptcha_get_settings_post() {
 
-    $nonce=$_REQUEST['wpnonce'];
-    if (! wp_verify_nonce($nonce, 'my-nonce') ) die("Security check");
+    if (! check_admin_referer( 'fc_nonce', 'fc-nonce' ) ) die("Security check");
+
 
     $funcaptcha_post = $_POST['funcaptcha'];
     $options = funcaptcha_get_settings();
