@@ -106,7 +106,7 @@ Yes, you can get those using the same account at our [website](https://swipeads.
 We are rapidly updating and adding features to both our Wordpress plugin and our core technology platform, in future we will offer new ways for you to display the CAPTCHA to better match your website.
 
 = Can I reposition the CAPTCHA? =
-You can change how you'd like to align FunCaptcha in our settings to better match your websites layout. This works on your comment forms, lost password and registration forms, as well as Contact Form 7, BuddyPress and our Gravity Form addons.
+You can change how you'd like to align FunCaptcha in the settings to better match your websites layout. This works on your comment forms, lost password and registration forms, as well as Contact Form 7, BuddyPress and our Gravity Form addons.
 
 = What does 'security level' mean? =
 By default, FunCaptcha's security level is Automatic, and you don't need to do a thing. But here are some details if you want to know what's going on under the hood.
