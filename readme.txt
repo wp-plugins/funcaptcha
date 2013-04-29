@@ -76,7 +76,7 @@ Most CAPTCHAs require the user to read and type in text. The text must be hard t
 = What is FunCaptcha? =
 FunCaptcha is a CAPTCHA that presents a mini-game that blocks the bots while giving your users a few moments of fun. It’s a real security solution, hardened by experts and automatically updated to provide the best protection. Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices. Visually impaired users can complete an audio challenge.
 
-= FunCaptcha does not appear for me =
+= FunCaptcha does not appear / I am using JetPack for comments =
 We have noticed a few of our users are using the JetPack plugin, which currently does not support showing a CAPTCHA by third parties. You can disable the JetPack comment addon from your dashboard and it will work fine. There may be other plugins that cause our CAPTCHA to not appear. We recommend you note down any type of comment or registration plugins before you contact us to help us better assist you. If you have any other CAPTCHA plugins, please disable those as well.
 
 = FunCaptcha shows an error message =
