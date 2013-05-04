@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.6
+ * @version 0.3.7
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: https://swipeads.co/
-Version: 0.3.6
+Version: 0.3.7
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.6');
+define('FUNCAPTCHA_VERSION', '0.3.7');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -62,11 +62,9 @@ function funcaptcha_init() {
             if (BP_INSTALLED) {
                 add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
                 add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
-            } else {
-                add_action('register_form', 'funcaptcha_register_form');
-                add_action('register_post', 'funcaptcha_register_post', 10, 3);
             }
-            
+            add_action('register_form', 'funcaptcha_register_form');
+            add_action('register_post', 'funcaptcha_register_post', 10, 3);
         }
 
         // If password_form is set in the options, attach to the lost password hooks    
