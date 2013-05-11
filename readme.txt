@@ -135,6 +135,9 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 
 == Changelog ==
 
+= 0.3.8 =
+* Code cleanup and optimizations.
+
 = 0.3.7 =
 * User with Buddypress installed will now see FunCaptcha on Buddypress as well as the Wordpress registration forms.
 

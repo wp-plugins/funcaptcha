@@ -19,16 +19,10 @@
 				<?php } else { ?>
 					<p>You have already activated this plugin, unless it doesn't work, you do not need to change these keys again. You can login at <a href="https://swipeads.co/" target='_blank'>SwipeAds</a> to add new keys or update your settings.</p>
 				<?php }
-				if (is_plugin_active('jetpack/jetpack.php')) {
-			        if (Jetpack::is_active()) {
-			            $jp_active = Jetpack::get_active_modules();
-			            if (in_array('comments', $jp_active)) {
-			                ?>
-								<p style="color:red">Warning: The plugin JetPack Comments has been detected. This will prevent FunCaptcha from working. You can disable JetPack Comments from the JetPack configuration page.<p>
-							<?php 
-						}
-			        }
-			    } ?>
+				
+				check_for_jetpack();
+
+				?>
 				<fieldset>
 					<?php
 						if (strlen($funcaptcha_options['public_key']) != 36 && strlen($funcaptcha_options['public_key']) > 0) {

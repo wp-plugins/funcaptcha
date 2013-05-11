@@ -856,3 +856,20 @@ function funcaptcha_get_install_page_options(&$action) {
     return $page_opts;
 }
 
+/**
+* Checks if jetpack plugin is installed, if so, warn user.
+*
+*/
+function check_for_jetpack() {
+    if (is_plugin_active('jetpack/jetpack.php')) {
+        if (Jetpack::is_active()) {
+            $jp_active = Jetpack::get_active_modules();
+            if (in_array('comments', $jp_active)) {
+                ?>
+                    <p style="color:red">Warning: The plugin JetPack Comments has been detected. This will prevent FunCaptcha from working. You can disable JetPack Comments from the JetPack configuration page.<p>
+                <?php 
+            }
+        }
+    }
+}
+
