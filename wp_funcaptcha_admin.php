@@ -17,7 +17,7 @@
 				<?php if (funcaptcha_is_key_missing()) { ?>
 					<p style="color:red">To activate this plugin, you need to supply access keys. You can do that on the <a href='<?php echo "plugins.php?page=" . PLUGIN_BASENAME?>'>activate tab</a>.</red><p>
 				<?php }
-				check_for_jetpack();
+					check_for_jetpack();
 				?>
 				<p>Select where you'd like the FunCaptcha to appear.</p>
 				<fieldset>
@@ -33,6 +33,11 @@
 					<label>Hide from logged in users?</label>
 					<input type="hidden" name="funcaptcha[hide_users]" value="0" />
 					<p><input type='checkbox' name='funcaptcha[hide_users]' value='1' <?php echo ( $funcaptcha_options['hide_users'] ) ? 'checked' : ''; ?> /> Yes</p>
+				</fieldset>
+				<fieldset>
+					<label>Hide from admins?</label>
+					<input type="hidden" name="funcaptcha[hide_admins]" value="0" />
+					<p><input type='checkbox' name='funcaptcha[hide_admins]' value='1' <?php echo ( $funcaptcha_options['hide_admins'] ) ? 'checked' : ''; ?> /> Yes</p>
 				</fieldset>
 				<fieldset>
 					<label>Security level:</label>

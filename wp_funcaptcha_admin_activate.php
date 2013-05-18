@@ -19,9 +19,7 @@
 				<?php } else { ?>
 					<p>You have already activated this plugin, unless it doesn't work, you do not need to change these keys again. You can login at <a href="https://swipeads.co/" target='_blank'>SwipeAds</a> to add new keys or update your settings.</p>
 				<?php }
-				
-				check_for_jetpack();
-
+					check_for_jetpack();
 				?>
 				<fieldset>
 					<?php
