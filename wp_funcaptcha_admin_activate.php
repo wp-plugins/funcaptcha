@@ -51,7 +51,7 @@
 				</fieldset>
 				<fieldset>
 					<label>Register:</label>
-					<iframe id="reg-fc" style="margin-bottom: 15px;" class="register-frame" src="https://swipeads.co/wp-fc-register/" scrolling="no" frameBorder="0" height="450px;" width="400px"></iframe>
+					<iframe id="reg-fc" style="margin-bottom: 15px;" class="register-frame" src="https://swipeads.co/wp-fc-register" scrolling="no" frameBorder="0" height="450px;" width="400px"></iframe>
 					<p>You can also register or login at our <a href="https://swipeads.co/" target="_blank">website</a>.</p>
 				</fieldset>
 			</form>
@@ -64,5 +64,10 @@
 		</div>
 	</div>
 </div>
-
  <p class="copyright">&copy; Copyright <?php echo date("Y"); ?> <a href="https://swipeads.co/">SwipeAds</a>. Version <?php echo FUNCAPTCHA_VERSION ?> </p>
+<script type="text/javascript">
+	if (!window.location.origin) window.location.origin = window.location.protocol+"//"+window.location.host;
+	//window.location.origin;
+	var userURL = encodeURIComponent(window.location.origin)
+	jQuery("#reg-fc").attr('src', ("https://swipeads.co/wp-fc-register/?url=" + userURL));
+</script>

@@ -1,15 +1,15 @@
 === FunCaptcha - game CAPTCHA ===
 Contributors: swipeads
-Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA, flash CAPTCHA
+Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA, flash CAPTCHA, comment protection CAPTCHA, comment anti-spam, comment spam, comment defense, capture, comment capture, form capture
 Requires at least: 2.8.0
 Tested up to: 3.5.1
-Stable tag: 0.3.9
+Stable tag: 0.3.10
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7.
 
 == Description ==
 
-Spammers abuse your site, but users hate typing out twisty letters or ad phrases (aka CAPTCHA and reCAPTCHA). Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game CAPTCHA that blocks the bots while giving your users a few moments of fun. It's a real security solution hardened by experts and automatically updated to provide the best protection. Try [a demo](https://swipeads.co/) on our site!
+Spammers abuse your site, but users hate typing out twisty letters or ad phrases (aka CAPTCHA and reCAPTCHA). Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game CAPTCHA that blocks the bots while giving your users a few moments of fun. It's a real security solution hardened by experts and automatically updated to provide the best protection. 
 
 Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge CAPTCHA provided by reCAPTCHA.
 
@@ -77,7 +77,7 @@ Most CAPTCHAs require the user to read and type in text. The text must be hard t
 FunCaptcha is a CAPTCHA that presents a mini-game that blocks the bots while giving your users a few moments of fun. It’s a real security solution, hardened by experts and automatically updated to provide the best protection. Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices. Visually impaired users can complete an audio challenge.
 
 = FunCaptcha does not appear / I am using JetPack for comments =
-We have noticed a few of our users are using the JetPack plugin, which currently does not support showing a CAPTCHA by third parties. You can disable the JetPack comment addon from your dashboard and it will work fine. There may be other plugins that cause our CAPTCHA to not appear. We recommend you note down any type of comment or registration plugins before you contact us to help us better assist you. If you have any other CAPTCHA plugins, please disable those as well.
+We have noticed a few of our users are using the JetPack plugin, which currently does not support showing a CAPTCHA by third parties. You can disable the JetPack comment addon from your dashboard and it will work fine. There may be other plugins that cause our CAPTCHA to not appear. We recommend you note down any type of comment or registration plugins before you contact us to help us better assist you. If you have any other CAPTCHA plugins, please disable those as well. Our CAPTCHA will detect if you are using JetPack and warn you of the conflicting.
 
 = FunCaptcha shows an error message =
 This error message will only appear if you have not correctly added your private and public keys to the settings panel in your wordpress admin dashboard. Our CAPTCHA requires these to properly secure your website. If you contiune to see the error message even after entering correct keys, you may have a plugin that prevents external communication to our servers, such as "wp protection", please disable those as well.
@@ -101,6 +101,9 @@ Our CAPTCHA currently only supports being displayed once on the same page, so pl
 
 = If I want to use your CAPTCHA on another site, do I need new keys? =
 Yes, you can get those using the same account at our [website](https://swipeads.co/). Please login with the same account you're currently using for your wordpress site.
+
+= How long does it take to install your CAPTCHA? =
+Our CAPTCHA can be installed in less than two minutes, the entire signup process is kept within the plugin itself, unlike other CAPTCHAs such as ReCAPTCHA.
 
 = Can I customize your CAPTCHA? =
 We are rapidly updating and adding features to both our Wordpress plugin and our core technology platform, in future we will offer new ways for you to display the CAPTCHA to better match your website.
@@ -134,6 +137,9 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 4. Admin Page
 
 == Changelog ==
+
+= 0.3.10 =
+* Signup now automatically detects your site URL and prefills it for you.
 
 = 0.3.9 =
 * Can now hide from admins.
