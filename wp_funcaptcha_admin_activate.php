@@ -15,9 +15,9 @@
 			<h2 class="settings-title">Activate</h2>
 			<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-settings'>
 				<?php if (funcaptcha_is_key_missing()) { ?>
-					<p style="color:red">To enable this plugin, you need to supply access keys. Create your account below or if you already have an account, please login at <a href="https://swipeads.co/" target='_blank'>SwipeAds</a>, then paste your public and private keys into the fields below.</p>
+					<p style="color:red">To enable this plugin, you need to supply access keys. Create your account below. Note: If you have already set up FunCaptcha on another WordPress site, you already have an account, and can easily add this site to that account. <a href="https://swipeads.co/faqs/#multWordpress" target='_blank'>Learn how to add more sites.</a></p>
 				<?php } else { ?>
-					<p>You have already activated this plugin, unless it doesn't work, you do not need to change these keys again. You can login at <a href="https://swipeads.co/" target='_blank'>SwipeAds</a> to add new keys or update your settings.</p>
+					<p>You have already activated this plugin, unless it doesn't work, you do not need to change these keys again. You can login at <a href="https://swipeads.co/" target='_blank'>SwipeAds</a> to add new sites or update your settings.</p>
 				<?php }
 					check_for_jetpack();
 				?>

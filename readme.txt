@@ -138,6 +138,9 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 
 == Changelog ==
 
+= 0.3.11 =
+* Added information about how to signup multiple Wordpress sites.
+
 = 0.3.10 =
 * Signup now automatically detects your site URL and prefills it for you.
 
