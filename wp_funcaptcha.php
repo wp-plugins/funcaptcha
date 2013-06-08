@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.11
+ * @version 0.3.12
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: https://swipeads.co/
-Version: 0.3.11
+Version: 0.3.12
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.11');
+define('FUNCAPTCHA_VERSION', '0.3.12');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 define('PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -74,10 +74,8 @@ function funcaptcha_init() {
         }
 
         // Registers the funcaptcha CF7 Actions if plugin is activated
-        if( $funcaptcha_options['cf7_support'] ) {
-            if (CF7_INSTALLED) {
-                funcaptcha_register_cf7_actions();
-            }
+        if (CF7_INSTALLED) {
+            funcaptcha_register_cf7_actions();
         }
 
         if (GF_DETECTED) {
@@ -425,8 +423,7 @@ function funcaptcha_set_options($options) {
                                 'hide_admins',
                                 'security_level',
                                 'error_message',
-                                'align',
-                                'cf7_support');
+                                'align');
 
     $new_options = array();
     foreach($options_allowed as $optal) {
@@ -526,8 +523,7 @@ function funcaptcha_get_settings_post() {
                                 'hide_admins',
                                 'security_level',
                                 'error_message',
-                                'align',
-                                'cf7_support');
+                                'align');
 
     $new_options = array();
     foreach($options_allowed as $optal) {
@@ -548,7 +544,6 @@ function funcaptcha_get_settings_post() {
         'hide_users' => '',
         'hide_admins' => '',
         'security_level' => 0,
-        'cf7_support' => '',
         'error_message' => 'Verification incomplete. Please solve the puzzle before you continue. The puzzle verifies that you are an actual user, not a spammer.',
         'align' => 'left'
         );

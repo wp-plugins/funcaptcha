@@ -3,13 +3,13 @@ Contributors: swipeads
 Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA, flash CAPTCHA, comment protection CAPTCHA, comment anti-spam, comment spam, comment defense, capture, comment capture, form capture
 Requires at least: 2.8.0
 Tested up to: 3.5.1
-Stable tag: 0.3.11
+Stable tag: 0.3.12
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7.
 
 == Description ==
 
-Spammers abuse your site, but users hate typing out twisty letters or ad phrases (aka CAPTCHA and reCAPTCHA). Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game CAPTCHA that blocks the bots while giving your users a few moments of fun. It's a real security solution hardened by experts and automatically updated to provide the best protection. 
+Spammers abuse your site, but users hate typing out twisty letters or ad phrases (aka CAPTCHA and reCAPTCHA). Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game CAPTCHA that blocks the bots while giving your users a few moments of fun. It's a real security solution hardened by experts and automatically updated to provide the best protection. Try [a demo](https://swipeads.co/) on our site!
 
 Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge CAPTCHA provided by reCAPTCHA.
 
@@ -83,12 +83,7 @@ We have noticed a few of our users are using the JetPack plugin, which currently
 This error message will only appear if you have not correctly added your private and public keys to the settings panel in your wordpress admin dashboard. Our CAPTCHA requires these to properly secure your website. If you contiune to see the error message even after entering correct keys, you may have a plugin that prevents external communication to our servers, such as "wp protection", please disable those as well.
 
 = I'm using the Contact Form 7 plugin. Can I use your CAPTCHA to protect my form? =
-Absolutely. You can enable our CAPTCHA for Contact Form 7 in the settings of FunCaptcha.
-
-1. Plugins -> FunCaptcha
-2. Contact Form 7 Support
-3. Tick the box.
-4. Our CAPTCHA will now appear as FunCaptcha as a short code option in Contact Form 7's Generate Tag dropdown.
+Our CAPTCHA will appear as FunCaptcha as a short code option in Contact Form 7's Generate Tag dropdown.
 
 = I'm using the Gravity Forms plugin. Can I use your CAPTCHA to protect my form or registration pages? =
 FunCaptcha supports being displayed as a CAPTCHA for Gravity Forms using the advanced fields tab in Gravity Forms.
@@ -137,6 +132,9 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 4. Admin Page
 
 == Changelog ==
+
+= 0.3.12 =
+* Contact Form 7 support is now enabled by default.
 
 = 0.3.11 =
 * Added information about how to signup multiple Wordpress sites.

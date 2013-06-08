@@ -60,15 +60,7 @@
 						<option value="right" <?php if ($funcaptcha_options['align'] == 'right') { echo 'selected="selected"'; } else { ''; };?>>Right</option>
 						<option value="center" <?php if ($funcaptcha_options['align'] == 'center') { echo 'selected="selected"'; } else { ''; };?>>Center</option>
 					</select>
-				</fieldset>
-				<?php if (CF7_INSTALLED) { ?>
-				<fieldset>
-					<label>Contact Form 7 Support:</label>
-					<p>This will enable FunCaptcha support for Contact Form 7. (Please ensure you don't display a Contact Form 7 containing a FunCaptcha on a page which already has FunCaptcha, such as a registration or comments page. See our <a href="https://swipeads.co/faqs" target="_blank">website</a> for details.)</p>
-					<input type="hidden" name="funcaptcha[cf7_support]" value="0" />
-					<p><input type='checkbox' name='funcaptcha[cf7_support]' value='1' <?php echo ( $funcaptcha_options['cf7_support'] ) ? 'checked' : ''; ?> /> Enable</p>
-				</fieldset>
-				<?php } ?>			
+				</fieldset>		
 				<fieldset>
 					<input type='hidden' name='funcaptcha[action]' value='<?php echo $action; ?>' />
 					<input type='hidden' name='funcaptcha[type]' value='Settings' />
