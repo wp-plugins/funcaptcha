@@ -109,6 +109,9 @@ You can change how you'd like to align FunCaptcha in the settings to better matc
 = What does 'security level' mean? =
 By default, FunCaptcha's security level is Automatic, and you don't need to do a thing. But here are some details if you want to know what's going on under the hood.
 
+= Can I disabled the CAPTCHA for logged in users? =
+Yes, this is an option in the settings.
+
 If the security level is Automatic, security starts at the lowest, Standard level. That means that users do fewer challenges, but spambots also have less work to do to guess their way past the challenge. For most sites, this is fine. Most people will only need to solve two challenges, and almost no spambots will get through. The security level rises and falls automatically, adjusted by FunCaptcha's monitoring system. If our system suspects that a user is a spambot, the security level for that user automatically rises to Enhanced level, described below.
 
 The Enhanced security level makes users do a few more challenges. It's still easy and quick for humans, but becomes much harder for spambots to get through. No spambot that we see attacking our many sites is capable of getting through the Enhanced level.
