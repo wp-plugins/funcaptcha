@@ -3,7 +3,7 @@
  * FunCaptcha
  * PHP Integration Library
  *
- * @version 0.0.4
+ * @version 0.0.5
  *
  * Copyright (c) 2013 SwipeAds -- https://www.swipeads.co
  * AUTHOR:
@@ -31,11 +31,11 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wp";
-	protected $funcaptcha_plugin_version = "0.3.12";
+	protected $funcaptcha_plugin_version = "0.3.14";
 	protected $funcaptcha_security_level = 0;
 	protected $session_token;
 
-	protected $version = '0.0.4';
+	protected $version = '0.0.5';
 
 	/**
 	 * Constructor
@@ -115,7 +115,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 			$url = "https://";
 			$url.= $this->funcaptcha_host;
 			$url.= $this->funcaptcha_challenge_url;
-
+			$url.= "?cache=" . time();
 			return "<div id='FunCaptcha'></div><input type='hidden' id='FunCaptcha-Token' name='fc-token' value='" . $this->session_token . "'><script src='". $url ."' type='text/javascript' language='JavaScript'></script>";
 		}
 		else

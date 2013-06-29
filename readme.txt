@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA, flash CAPTCHA, comment protection CAPTCHA, comment anti-spam, comment spam, comment defense, capture, comment capture, form capture
 Requires at least: 2.8.0
 Tested up to: 3.5.1
-Stable tag: 0.3.13
+Stable tag: 0.3.14
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7.
 
@@ -135,6 +135,9 @@ For a full list of frequently asked questions, please see our [FAQ page](https:/
 4. Admin Page
 
 == Changelog ==
+
+= 0.3.14 =
+* Added support for cache plugins.
 
 = 0.3.13 =
 * Added support for users with allow_url_include=0 set.
