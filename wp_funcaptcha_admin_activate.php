@@ -15,9 +15,9 @@
 			<h2 class="settings-title">Activate</h2>
 			<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-settings'>
 				<?php if (funcaptcha_is_key_missing()) { ?>
-					<p style="color:red">To enable this plugin, you need to supply access keys. Create your account below. Note: If you have already set up FunCaptcha on another WordPress site, you already have an account, and can easily add this site to that account. <a href="https://swipeads.co/faqs/#multWordpress" target='_blank'>Learn how to add more sites.</a></p>
+					<p style="color:red">To enable this plugin, you need to supply access keys. Create your account below. Note: If you have already set up FunCaptcha on another WordPress site, you already have an account, and can easily add this site to that account. <a href="https://funcaptcha.co/faqs/#multWordpress" target='_blank'>Learn how to add more sites.</a></p>
 				<?php } else { ?>
-					<p>You have already activated this plugin, unless it doesn't work, you do not need to change these keys again. You can login at <a href="https://swipeads.co/" target='_blank'>SwipeAds</a> to add new sites or update your settings.</p>
+					<p>You have already activated this plugin, unless it doesn't work, you do not need to change these keys again. You can login at <a href="http://www.funcaptcha.co/" target='_blank'>SwipeAds</a> to add new sites or update your settings.</p>
 				<?php }
 					check_for_jetpack();
 				?>
@@ -25,7 +25,7 @@
 					<?php
 						if (strlen($funcaptcha_options['public_key']) != 36 && strlen($funcaptcha_options['public_key']) > 0) {
 							?>
-								<p style="color:red; font-weight:bold;">This key isn't the correct length. Make sure you have correctly copied it from your account at <a href="https://swipeads.co" target="_blank">SwipeAds.co</a>.</p>
+								<p style="color:red; font-weight:bold;">This key isn't the correct length. Make sure you have correctly copied it from your account at <a href="http://www.funcaptcha.co" target="_blank">SwipeAds.co</a>.</p>
 							<?php
 						}
 					?>
@@ -36,7 +36,7 @@
 					<?php
 						if (strlen($funcaptcha_options['private_key']) != 36 && strlen($funcaptcha_options['public_key']) > 0) {
 							?>
-								<p style="color:red; font-weight:bold;">This key isn't the correct length. Make sure you have correctly copied it from your account at <a href="https://swipeads.co" target="_blank">SwipeAds.co</a>.</p>
+								<p style="color:red; font-weight:bold;">This key isn't the correct length. Make sure you have correctly copied it from your account at <a href="http://www.funcaptcha.co" target="_blank">SwipeAds.co</a>.</p>
 							<?php
 						}
 					?>
@@ -51,8 +51,8 @@
 				</fieldset>
 				<fieldset>
 					<label>Register:</label>
-					<iframe id="reg-fc" style="margin-bottom: 15px;" class="register-frame" src="https://swipeads.co/wp-fc-register" scrolling="no" frameBorder="0" height="450px;" width="400px"></iframe>
-					<p>You can also register or login at our <a href="https://swipeads.co/" target="_blank">website</a>.</p>
+					<iframe id="reg-fc" style="margin-bottom: 15px;" class="register-frame" src="https://www.funcaptcha.co/wp-fc-register" scrolling="no" frameBorder="0" height="450px;" width="400px"></iframe>
+					<p>You can also register or login at our <a href="http://www.funcaptcha.co/" target="_blank">website</a>.</p>
 				</fieldset>
 			</form>
 		</div>
@@ -60,14 +60,14 @@
 	<div class='funcaptcha-box'>
 		<div class='inside'>
 			<h2 class="settings-title">Support</h2>
-			<p>If you're having trouble getting FunCaptcha to work, please <a href="https://swipeads.co/contact-us" target="_blank">contact us</a> and we'll get back to you.</p>
+			<p>If you're having trouble getting FunCaptcha to work, please <a href="http://www.funcaptcha.co/contact-us" target="_blank">contact us</a> and we'll get back to you.</p>
 		</div>
 	</div>
 </div>
- <p class="copyright">&copy; Copyright <?php echo date("Y"); ?> <a href="https://swipeads.co/">SwipeAds</a>. Version <?php echo FUNCAPTCHA_VERSION ?> </p>
+ <p class="copyright">&copy; Copyright <?php echo date("Y"); ?> <a href="http://www.funcaptcha.co/">SwipeAds</a>. Version <?php echo FUNCAPTCHA_VERSION ?> </p>
 <script type="text/javascript">
 	if (!window.location.origin) window.location.origin = window.location.protocol+"//"+window.location.host;
 	//window.location.origin;
 	var userURL = encodeURIComponent(window.location.origin)
-	jQuery("#reg-fc").attr('src', ("https://swipeads.co/wp-fc-register/?url=" + userURL));
+	jQuery("#reg-fc").attr('src', ("https://www.funcaptcha.co/wp-fc-register/?url=" + userURL));
 </script>

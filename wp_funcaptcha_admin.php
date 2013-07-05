@@ -41,7 +41,7 @@
 				</fieldset>
 				<fieldset>
 					<label>Security level:</label>
-					<p>If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. For more information, see our <a href="https://swipeads.co/faqs/" target="_blank">FAQ</a>.</p>
+					<p>If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. For more information, see our <a href="http://www.funcaptcha.co/faqs/" target="_blank">FAQ</a>.</p>
 					<select name="funcaptcha[security_level]" value="security_level">
 						<option value="0" <?php if ($funcaptcha_options['security_level'] == 0) { echo 'selected="selected"'; } else { ''; };?>>Automatic</option>
 						<option value="20" <?php if ($funcaptcha_options['security_level'] == 20) { echo 'selected="selected"'; } else { ''; };?>>Always Enhanced</option>
@@ -73,9 +73,9 @@
 	<div class='funcaptcha-box'>
 		<div class='inside'>
 			<h2 class="settings-title">Support</h2>
-			<p>If you're having trouble getting FunCaptcha to work, please <a href="https://swipeads.co/contact-us" target="_blank">contact us</a> and we'll get back to you.</p>
+			<p>If you're having trouble getting FunCaptcha to work, please <a href="http://www.funcaptcha.co/contact-us" target="_blank">contact us</a> and we'll get back to you.</p>
 		</div>
 	</div>
 </div>
 
- <p class="copyright">&copy; Copyright <?php echo date("Y"); ?> <a href="https://swipeads.co/">SwipeAds</a>. Version <?php echo FUNCAPTCHA_VERSION ?> </p>
+ <p class="copyright">&copy; Copyright <?php echo date("Y"); ?> <a href="http://www.funcaptcha.co/">SwipeAds</a>. Version <?php echo FUNCAPTCHA_VERSION ?> </p>

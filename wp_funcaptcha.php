@@ -1,19 +1,19 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.14
+ * @version 0.3.15
  */
 /*
 Plugin Name: FunCaptcha
 Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
-Author URI: https://swipeads.co/
-Version: 0.3.14
+Author URI: http://funcaptcha.co/
+Version: 0.3.15
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.14');
+define('FUNCAPTCHA_VERSION', '0.3.15');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 if ( ! defined( 'PLUGIN_PATH' ) ) {
@@ -148,7 +148,7 @@ function funcaptcha_register_plugin_meta_links($links, $file) {
     if ($file == PLUGIN_BASENAME) {
 
         $links[] = '<a href="plugins.php?page='.PLUGIN_BASENAME.'">' . __('Settings','captcha') . '</a>';
-        $links[] = '<a href="https://www.swipeads.co/contact">' . __('Contact','captcha') . '</a>';
+        $links[] = '<a href="http://www.funcaptcha.co/contact-us">' . __('Contact','captcha') . '</a>';
     }
     return $links;
 }
@@ -846,7 +846,7 @@ function funcaptcha_get_install_page_options(&$action) {
     $page_opts = array();
     $page_opts['title'] =  "Installation";
     $page_opts['button'] = "Complete Installation";
-    $page_opts['flash_message'] = "<p>To complete your installation:</p><ol><li><a href='https://swipeads.co/register'>Register for an account</a> on SwipeAds.</li><li>Copy the public and private keys into the fields below.</li></ol>";
+    $page_opts['flash_message'] = "<p>To complete your installation:</p><ol><li><a href='http://www.funcaptcha.co/register'>Register for an account</a> on FunCaptcha.</li><li>Copy the public and private keys into the fields below.</li></ol>";
     
     if (isset($_POST['funcaptcha'])) {
         $action = 'settings';

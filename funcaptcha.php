@@ -5,7 +5,7 @@
  *
  * @version 0.0.5
  *
- * Copyright (c) 2013 SwipeAds -- https://www.swipeads.co
+ * Copyright (c) 2013 SwipeAds -- http://www.funcaptcha.co
  * AUTHOR:
  *   Kevin Gosschalk
  * 
@@ -18,7 +18,7 @@
  * THE SOFTWARE.
  *
  */
-define("FUNCAPTCHA_SERVER", "swipeads.co");
+define("FUNCAPTCHA_SERVER", "funcaptcha.co");
 
 // Define class if it does not already exist
 if ( ! class_exists('FUNCAPTCHA')):
@@ -27,7 +27,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	// Set defaults for values that can be specified via the config file or passed in via __construct.
 	protected $funcaptcha_public_key = '';
 	protected $funcaptcha_private_key = '';
-	protected $funcaptcha_host = 'swipeads.co';
+	protected $funcaptcha_host = 'funcaptcha.co';
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wp";
