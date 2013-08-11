@@ -15,8 +15,6 @@ Users complete these little games faster than other CAPTCHAs, with fewer frustra
 
 The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7 and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often.
 
-If you get in on the ground floor now, you can be first in line to start earning money with upcoming FunCaptchas that integrate advertising with the fun, fast CAPTCHA games you see now. They will require no typing or extra time, and remain as secure as ever.
-
 Learn more, give feedback, and ask questions at our website. Our epic battle against bots doesn't have to be a headache. Let's fight while having some fun!
 
 == Installation ==
