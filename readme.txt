@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA, flash CAPTCHA, comment protection CAPTCHA, comment anti-spam, comment spam, comment defense, capture, comment capture, form capture
 Requires at least: 2.8.0
 Tested up to: 3.5.1
-Stable tag: 0.3.15
+Stable tag: 0.3.14
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7.
 
@@ -95,7 +95,7 @@ Our CAPTCHA has full support for Buddypress and can be included on any Buddypres
 Our CAPTCHA currently only supports being displayed once on the same page, so please only show it in a form if there is no comments on the same page.
 
 = If I want to use your CAPTCHA on another site, do I need new keys? =
-Yes, you can get those using the same account at our [website](https://www.funcaptcha.co/). Please login with the same account you're currently using for your wordpress site.
+Yes, you can get those using the same account at our [website](https://swipeads.co/). Please login with the same account you're currently using for your wordpress site.
 
 = How long does it take to install your CAPTCHA? =
 Our CAPTCHA can be installed in less than two minutes, the entire signup process is kept within the plugin itself, unlike other CAPTCHAs such as ReCAPTCHA.
@@ -116,7 +116,7 @@ If the security level is Automatic, security starts at the lowest, Standard leve
 
 The Enhanced security level makes users do a few more challenges. It's still easy and quick for humans, but becomes much harder for spambots to get through. No spambot that we see attacking our many sites is capable of getting through the Enhanced level.
 
-As a site publisher, you start off at the Automatic security level, which is probably your best option, so you don't need to do a thing. However, if you wish, you can adjust your settings so security remains always at a particular elevated level, and won't adjust automatically. For example, you can assure that all of your users (and all spambots!) will always play at the Enhanced security level. You can change this setting for any domain listed on your account page at [FunCaptcha.co](http://www.funcaptcha.co/). If you use our WordPress plugin, you can also use the plugin settings page. (If these two places don't have the same security setting, the more elevated setting of the two will prevail.)
+As a site publisher, you start off at the Automatic security level, which is probably your best option, so you don't need to do a thing. However, if you wish, you can adjust your settings so security remains always at a particular elevated level, and won't adjust automatically. For example, you can assure that all of your users (and all spambots!) will always play at the Enhanced security level. You can change this setting for any domain listed on your account page at [SwipeAds.co](http://www.funcaptcha.co/). If you use our WordPress plugin, you can also use the plugin settings page. (If these two places don't have the same security setting, the more elevated setting of the two will prevail.)
 
 = What do the stars do? =
 You earn stars as you complete FunCaptchas anywhere on the web. The faster you complete the CAPTCHA challenge, the more stars you get. Gettng 5 stars means you play the games as well as we, the creators, do– and we have lots of practice! Unless you are using a “cookie blocker” or a “do not track” function on your browser, your star count will keep increasing each time you play. Once you reach 100 stars, you will get a special reward. The reward is not implemented yet but stay tuned, and keep honing your FunCaptcha skills!
@@ -136,8 +136,11 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 
 == Changelog ==
 
+= 0.3.16 =
+* Updated error message.
+
 = 0.3.15 =
-* Performance upgrades, all CAPTCHAs will load and solve much faster now. Updates to funcaptcha.co.
+* Updated to funcaptcha.co
 
 = 0.3.14 =
 * Added support for cache plugins.
@@ -183,7 +186,7 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 * Can now adjust the alignment of FunCaptcha, left, right or centered.
 
 = 0.3.0 =
-* Adjustable security setting. You can now choose between Automatic and Enhanced security. If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. Please read more at our [FAQ](https://www.funcaptcha.co/faqs)
+* Adjustable security setting. You can now choose between Automatic and Enhanced security. If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. Please read more at our [FAQ](https://swipeads.co/faqs)
 
 = 0.2.2 =
 * Gravity Forms support. You can now use FunCaptcha in any Gravity Forms, using the advanced field elements.
