@@ -580,13 +580,6 @@ function funcaptcha_resize_mobile() {
     return $script;
 }
 
-/**
- * Moves the submit button to the bottom and moves the PlayThru above the
- * comment form if necessary
- *
- * TODO: It might be a good idea to use wp_enqueue_script instead, but there
- * might be issues with dynamically inserting the button
- */
 function funcaptcha_rearrange_elements($button_id = 'submit') {
     if ($button_id == '') {
         $button_id = 'submit';
