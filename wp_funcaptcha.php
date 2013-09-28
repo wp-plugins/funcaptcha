@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.16
+ * @version 0.3.17
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: http://funcaptcha.co/
-Version: 0.3.16
+Version: 0.3.17
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.16');
+define('FUNCAPTCHA_VERSION', '0.3.17');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 if ( ! defined( 'PLUGIN_PATH' ) ) {
@@ -65,6 +65,16 @@ function funcaptcha_init() {
                 add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
                 add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
             }
+            add_action('register_form', 'funcaptcha_register_form');
+            add_action('register_post', 'funcaptcha_register_post', 10, 3);
+        }
+
+        if( $funcaptcha_options['login_form'] ) {
+            add_action('login_form', 'funcaptcha_login_form');
+            add_filter('authenticate', 'funcaptcha_login_post', 10, 3);
+        }
+
+        if( $funcaptcha_options['register_form'] ) {
             add_action('register_form', 'funcaptcha_register_form');
             add_action('register_post', 'funcaptcha_register_post', 10, 3);
         }
@@ -421,6 +431,7 @@ function funcaptcha_set_options($options) {
                                 'register_form',
                                 'password_form',
                                 'comment_form',
+                                'login_form',
                                 'hide_users',
                                 'hide_admins',
                                 'security_level',
@@ -458,6 +469,7 @@ function funcaptcha_get_settings() {
         'register_form' => true,
         'password_form' => true,
         'comment_form' => true,
+        'login_form'    => false,
         'hide_users' => false,
         'hide_admins' => false,
         'security_level' => 0,
@@ -521,6 +533,7 @@ function funcaptcha_get_settings_post() {
                                 'register_form',
                                 'password_form',
                                 'comment_form',
+                                'login_form',
                                 'hide_users',
                                 'hide_admins',
                                 'security_level',
@@ -771,13 +784,47 @@ function funcaptcha_lost_password_form() {
 }
 
 /**
+* display funcaptcha in login form
+*
+* @return null
+*/
+function funcaptcha_login_form() {
+    //increase standard WP login form width to fit FC.
+    echo "<style>#loginform {width: 310px;}</style>";
+    funcaptcha_register_form();
+}
+
+/**
+* validates login funcaptcha
+*
+* @return null
+*/
+function funcaptcha_login_post($user) {
+    if ($_POST) {
+        $funcaptcha = funcaptcha_API();
+        $options = funcaptcha_get_settings();
+        
+        if ( $funcaptcha->checkResult($options['private_key']) ) {
+            return;
+        } else {
+            if (!is_wp_error($user)) {
+                    $user = new WP_Error();
+                }
+                $user->add('captcha_fail', __($options['error_message']), 'funcaptcha');
+                remove_action('authenticate', 'wp_authenticate_username_password', 20);
+                return $user;
+        }
+    }
+}
+
+/**
 * validates lost password funcaptcha
 *
 * @return null
 */
 function funcaptcha_lost_password_post() {
   
-     $funcaptcha = funcaptcha_API();
+    $funcaptcha = funcaptcha_API();
     $options = funcaptcha_get_settings();
     
     if ( $funcaptcha->checkResult($options['private_key']) ) {

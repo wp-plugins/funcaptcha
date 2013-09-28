@@ -28,6 +28,8 @@
 					<p><input type='checkbox' name='funcaptcha[password_form]' value='1' <?php echo ( $funcaptcha_options['password_form'] ) ? 'checked' : ''; ?> /> Lost Password</p>
 					<input type="hidden" name="funcaptcha[comment_form]" value="0" />
 					<p><input type='checkbox' name='funcaptcha[comment_form]' value='1' <?php echo ( $funcaptcha_options['comment_form'] ) ? 'checked' : ''; ?> /> Comments</p>
+					<input type="hidden" name="funcaptcha[login_form]" value="0" />
+					<p><input type='checkbox' name='funcaptcha[login_form]' value='1' <?php echo ( $funcaptcha_options['login_form'] ) ? 'checked' : ''; ?> /> Login</p>
 				</fieldset>
 				<fieldset>
 					<label>Hide from logged in users?</label>
