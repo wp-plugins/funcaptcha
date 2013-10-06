@@ -15,7 +15,7 @@
 			<h2 class="settings-title">Activate</h2>
 			<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-settings'>
 				<?php if (funcaptcha_is_key_missing()) { ?>
-					<p style="color:red">To enable this plugin, you need to supply access keys. Create your account below. Note: If you have already set up FunCaptcha on another WordPress site, you already have an account, and can easily add this site to that account. <a href="https://funcaptcha.co/faqs/#multWordpress" target='_blank'>Learn how to add more sites.</a></p>
+					<p style="color:red">To enable this plugin, you need to supply access keys. <a href="http://www.funcaptcha.co/register" target="_blank">Create your account at our website</a>. Note: If you have already set up FunCaptcha on another WordPress site, you already have an account, and can easily add this site to that account. <a href="https://funcaptcha.co/faqs/#multWordpress" target='_blank'>Learn how to add more sites.</a></p>
 				<?php } else { ?>
 					<p>You have already activated this plugin, unless it doesn't work, you do not need to change these keys again. You can login at <a href="http://www.funcaptcha.co/" target='_blank'>SwipeAds</a> to add new sites or update your settings.</p>
 				<?php }
@@ -30,7 +30,7 @@
 						}
 					?>
 					<label>Public Key:</label>
-					<input type='text' name='funcaptcha[public_key]' placeholder="Register below to get your key" value='<?php echo htmlentities($funcaptcha_options['public_key']); ?>'/>
+					<input type='text' name='funcaptcha[public_key]' placeholder="Register at funcaptcha.co to get your key" value='<?php echo htmlentities($funcaptcha_options['public_key']); ?>'/>
 				</fieldset>
 				<fieldset>
 					<?php
@@ -41,19 +41,13 @@
 						}
 					?>
 					<label>Private Key:</label>
-					<input type='text' name='funcaptcha[private_key]' placeholder="Register below to get your key" value='<?php echo htmlentities($funcaptcha_options['private_key']); ?>'/>
+					<input type='text' name='funcaptcha[private_key]' placeholder="Register at funcaptcha.co to get your key" value='<?php echo htmlentities($funcaptcha_options['private_key']); ?>'/>
 				</fieldset>
 				<fieldset>
 					<input type='hidden' name='funcaptcha[action]' value='<?php echo $action; ?>' />
 					<input type='hidden' name='funcaptcha[type]' value='Activate' />
 					<?php wp_nonce_field( 'fc_nonce','fc-nonce' ); ?>
 					<button type='submit' class='button-primary'>Save my keys</button>
-				</fieldset>
-				<fieldset>
-					<label>Register:</label>
-					<button id='reg-show' class='button-primary' style='margin-top:5px;'>Show Registration</button>
-					<iframe id="reg-fc" style="display: none; margin-bottom: 15px;" class="register-frame" src="" scrolling="no" frameBorder="0" height="450px;" width="400px"></iframe>
-					<p>Clicking show registration will connect to our servers to display the registration form. You can also register or login at our <a href="http://www.funcaptcha.co/" target="_blank">website</a>.</p>
 				</fieldset>
 			</form>
 		</div>
@@ -66,17 +60,3 @@
 	</div>
 </div>
  <p class="copyright">&copy; Copyright <?php echo date("Y"); ?> <a href="http://www.funcaptcha.co/">SwipeAds</a>. Version <?php echo FUNCAPTCHA_VERSION ?> </p>
-<script type="text/javascript">
-	if (!window.location.origin) window.location.origin = window.location.protocol+"//"+window.location.host;
-	var userURL = encodeURIComponent(window.location.origin);
-	var displayForm = false;
-	jQuery( "#reg-show" ).click(function() {
-	  if (!displayForm) {
-			displayForm = true;
-			jQuery("#reg-fc").show();
-			jQuery("#reg-show").hide();
-			jQuery("#reg-fc").attr('src', ("https://www.funcaptcha.co/wp-fc-register/?url=" + userURL));
-			return false;
-		}
-	});
-</script>
