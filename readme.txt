@@ -1,9 +1,9 @@
 === FunCaptcha - game CAPTCHA ===
 Contributors: swipeads
-Tags: antispam, capcha, CAPTCHA, captha, catcha, comment, login, lost password, game CAPTCHA, registration, spam, text CAPTCHA, buddypress, contact form 7, anti-bot, anti-spam, capcha, CAPTCHA plugin, CAPTCHA Security, captha, catcha, comments, fun CAPTCHA, image CAPTCHA, picture CAPTCHA, reCAPTCHA, registration, security, audio CAPTCHA, spam, accessible CAPTCHA, easy CAPTCHA, fast CAPTCHA, secure CAPTCHA, spam proof CAPTCHA, anti-bot CAPTCHA, mobile CAPTCHA, interactive CAPTCHA, iphone CAPTCHA, html5 CAPTCHA, entertaining CAPTCHA, enjoyable CAPTCHA, registration CAPTCHA, lost password CAPTCHA, comment CAPTCHA, anti-spam CAPTCHA, buddypress CAPTCHA, wordpress CAPTCHA, Gravity Forms CAPTCHA, Gravity CAPTCHA, form CAPTCHA, flash CAPTCHA, comment protection CAPTCHA, comment anti-spam, comment spam, comment defense, comment capture, form capture, CF7, CF7 CAPTCHA, Gravity Forms anti-spam, login form, login protect, login CAPTCHA
+Tags: captcha, antispam, comment, login, registration captcha, contact form 7 captcha, gravity forms captcha, buddypress CAPTCHA, spam blocking CAPTCHA
 Requires at least: 2.8.0
 Tested up to: 3.6.1
-Stable tag: 0.3.18
+Stable tag: 0.3.19
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7.
 
@@ -16,6 +16,8 @@ Users complete these little games faster than other CAPTCHAs, with fewer frustra
 The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7 and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often.
 
 Learn more, give feedback, and ask questions at our website. Our epic battle against bots doesn't have to be a headache. Let's fight while having some fun!
+
+To remain secure, this plugin connects to the FunCaptcha API servers to display and validate users answers. 
 
 == Installation ==
 
@@ -133,6 +135,9 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 4. Admin Page
 
 == Changelog ==
+
+= 0.3.19 =
+* Made more clear the service connects to the funcaptcha API servers to verify solves.
 
 = 0.3.18 =
 * Fixed bug with missing files.

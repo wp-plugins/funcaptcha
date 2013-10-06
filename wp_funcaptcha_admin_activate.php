@@ -51,8 +51,9 @@
 				</fieldset>
 				<fieldset>
 					<label>Register:</label>
-					<iframe id="reg-fc" style="margin-bottom: 15px;" class="register-frame" src="https://www.funcaptcha.co/wp-fc-register" scrolling="no" frameBorder="0" height="450px;" width="400px"></iframe>
-					<p>You can also register or login at our <a href="http://www.funcaptcha.co/" target="_blank">website</a>.</p>
+					<button id='reg-show' class='button-primary' style='margin-top:5px;'>Show Registration</button>
+					<iframe id="reg-fc" style="display: none; margin-bottom: 15px;" class="register-frame" src="" scrolling="no" frameBorder="0" height="450px;" width="400px"></iframe>
+					<p>Clicking show registration will connect to our servers to display the registration form. You can also register or login at our <a href="http://www.funcaptcha.co/" target="_blank">website</a>.</p>
 				</fieldset>
 			</form>
 		</div>
@@ -67,7 +68,15 @@
  <p class="copyright">&copy; Copyright <?php echo date("Y"); ?> <a href="http://www.funcaptcha.co/">SwipeAds</a>. Version <?php echo FUNCAPTCHA_VERSION ?> </p>
 <script type="text/javascript">
 	if (!window.location.origin) window.location.origin = window.location.protocol+"//"+window.location.host;
-	//window.location.origin;
-	var userURL = encodeURIComponent(window.location.origin)
-	jQuery("#reg-fc").attr('src', ("https://www.funcaptcha.co/wp-fc-register/?url=" + userURL));
+	var userURL = encodeURIComponent(window.location.origin);
+	var displayForm = false;
+	jQuery( "#reg-show" ).click(function() {
+	  if (!displayForm) {
+			displayForm = true;
+			jQuery("#reg-fc").show();
+			jQuery("#reg-show").hide();
+			jQuery("#reg-fc").attr('src', ("https://www.funcaptcha.co/wp-fc-register/?url=" + userURL));
+			return false;
+		}
+	});
 </script>
