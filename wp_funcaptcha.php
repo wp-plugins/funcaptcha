@@ -65,18 +65,16 @@ function funcaptcha_init() {
                 if (BP_INSTALLED) {
                     add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
                     add_action('bp_signup_validate', 'funcaptcha_register_post_wpmu');
-                } else {
-                    add_action( 'signup_extra_fields', 'funcaptcha_register_form_wpmu' );
-                    add_filter( 'wpmu_validate_user_signup', 'funcaptcha_register_post_wpmu' );
                 }
+                add_action( 'signup_extra_fields', 'funcaptcha_register_form_wpmu' );
+                add_filter( 'wpmu_validate_user_signup', 'funcaptcha_register_post_wpmu' );
             } else {
                 if (BP_INSTALLED) {
                     add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
                     add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
-                } else { 
-                    add_action('register_form', 'funcaptcha_register_form');
-                    add_action('register_post', 'funcaptcha_register_post', 10, 3);
                 }
+                add_action('register_form', 'funcaptcha_register_form');
+                add_action('register_post', 'funcaptcha_register_post', 10, 3);
             }
         }
 
