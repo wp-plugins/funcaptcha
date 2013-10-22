@@ -136,6 +136,9 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 
 == Changelog ==
 
+= 0.4.1 =
+* Show form on both buddypress and regular registration forms for Multisites.
+
 = 0.4.0 =
 * Support for wordpress multisite registration forms.
 
