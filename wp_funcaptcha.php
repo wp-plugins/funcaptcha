@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.3.19
+ * @version 0.4.0
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: http://funcaptcha.co/
-Version: 0.3.19
+Version: 0.4.0
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.3.19');
+define('FUNCAPTCHA_VERSION', '0.4.0');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 if ( ! defined( 'PLUGIN_PATH' ) ) {
@@ -61,22 +61,28 @@ function funcaptcha_init() {
         
         // If register_form is set in the options, attach to the register hooks
         if( $funcaptcha_options['register_form'] ) {
-            if (BP_INSTALLED) {
-                add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
-                add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
+            if (is_multisite()) {
+                if (BP_INSTALLED) {
+                    add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
+                    add_action('bp_signup_validate', 'funcaptcha_register_post_wpmu');
+                } else {
+                    add_action( 'signup_extra_fields', 'funcaptcha_register_form_wpmu' );
+                    add_filter( 'wpmu_validate_user_signup', 'funcaptcha_register_post_wpmu' );
+                }
+            } else {
+                if (BP_INSTALLED) {
+                    add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
+                    add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
+                } else { 
+                    add_action('register_form', 'funcaptcha_register_form');
+                    add_action('register_post', 'funcaptcha_register_post', 10, 3);
+                }
             }
-            add_action('register_form', 'funcaptcha_register_form');
-            add_action('register_post', 'funcaptcha_register_post', 10, 3);
         }
 
         if( $funcaptcha_options['login_form'] ) {
             add_action('login_form', 'funcaptcha_login_form');
             add_filter('authenticate', 'funcaptcha_login_post', 10, 3);
-        }
-
-        if( $funcaptcha_options['register_form'] ) {
-            add_action('register_form', 'funcaptcha_register_form');
-            add_action('register_post', 'funcaptcha_register_post', 10, 3);
         }
 
         // If password_form is set in the options, attach to the lost password hooks    
@@ -717,6 +723,37 @@ function funcaptcha_register_form() {
 }
 
 /**
+* display funcaptcha in registration form for multi-sites
+*
+* @return boolean
+*/
+function funcaptcha_register_form_wpmu($errors) {
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+    $error = $errors->get_error_message('funcaptcha_incorrect');
+    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    switch ($options['align']) {
+        case "left" :
+            $style = "text-align: left;";
+        break; 
+        case "right" :
+            $style = "text-align: right;";
+        break;
+        case "center" :
+            $style = "text-align: center;";
+        break;
+    }
+    if ($error) {
+        echo '<p class="error">' . $error . '</p>';
+    }
+    echo "<div id='funcaptcha-wrapper' style='" . $style . "'>" . $html .  "</div>";
+    echo funcaptcha_resize_mobile();
+    return true;
+}
+
+
+
+/**
 * display funcaptcha in registration form
 *
 * @return boolean
@@ -742,6 +779,26 @@ function funcaptcha_register_form_bp() {
     echo "<div id='funcaptcha-wrapper' style='" . $style . "'>" . $html .  "</div>";
     echo funcaptcha_resize_mobile();
     return true;
+}
+
+
+
+
+/**
+* validates registration funcaptcha for multi-site setup
+*
+* @return array
+*/
+function funcaptcha_register_post_wpmu($results) {
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+    
+    if ( $funcaptcha->checkResult($options['private_key']) ) {
+        return( $results );
+    } else {
+        $results['errors']->add('funcaptcha_incorrect', '<strong>'.__('ERROR', 'funcaptcha').'</strong>: '.__(htmlentities($options['error_message']), 'funcaptcha'));
+    }
+    return( $results );
 }
 
 /**
