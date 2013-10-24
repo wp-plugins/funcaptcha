@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: captcha, antispam, comment, login, registration captcha, contact form 7 captcha, gravity forms captcha, buddypress CAPTCHA, spam blocking CAPTCHA, CAPTCHA plugin
 Requires at least: 2.8.0
 Tested up to: 3.6.1
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7.
 
@@ -135,6 +135,9 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 4. Admin Page
 
 == Changelog ==
+
+= 0.4.2 =
+* Easier to register link.
 
 = 0.4.1 =
 * Show form on both buddypress and regular registration forms for Multisites.
