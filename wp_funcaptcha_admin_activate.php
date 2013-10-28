@@ -5,7 +5,11 @@
 <style type="text/css">.nav-btn{background-color:white;cursor:hand;cursor:pointer}.nav-btn:hover{color:#d54e21}</style>
 <script type="text/javascript">
 function openpopup(popurl){
-var winpops=window.open(popurl,"","width=400,height=450")
+	if (!window.location.origin) window.location.origin = window.location.protocol+"//"+window.location.host;
+	//window.location.origin;
+	var userURL = encodeURIComponent(window.location.origin)
+	var url = "https://www.funcaptcha.co/wp-fc-register/?url=" + userURL;
+	var winpops=window.open(url,"","width=400,height=450")
 }
 </script>
 <h2 class="nav-tab-wrapper">
@@ -21,7 +25,7 @@ var winpops=window.open(popurl,"","width=400,height=450")
 			<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-settings'>
 				<?php if (funcaptcha_is_key_missing()) { ?>
 					<p style="color:red">To enable this plugin, you need to supply access keys. <a href="http://www.funcaptcha.co/register" target="_blank">Create your account at our website</a>. Note: If you have already set up FunCaptcha on another WordPress site, you already have an account, and can easily add this site to that account. <a href="https://funcaptcha.co/faqs/#multWordpress" target='_blank'>Learn how to add more sites.</a></p>
-					<a href="javascript:openpopup('https://www.funcaptcha.co/wp-fc-register/')"><button type='button' class='button-primary'>Register at FunCaptcha.co</button></a>
+					<a href="javascript:openpopup()"><button type='button' class='button-primary'>Register at FunCaptcha.co</button></a>
 				<?php } else { ?>
 					<p>You have already activated this plugin, unless it doesn't work, you do not need to change these keys again. You can login at <a href="http://www.funcaptcha.co/" target='_blank'>FunCaptcha</a> to add new sites or update your settings.</p>
 				<?php }
