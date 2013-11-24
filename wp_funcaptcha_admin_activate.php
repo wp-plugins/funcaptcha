@@ -8,12 +8,15 @@ function openpopup(popurl){
 	if (!window.location.origin) window.location.origin = window.location.protocol+"//"+window.location.host;
 	//window.location.origin;
 	var userURL = encodeURIComponent(window.location.origin)
+	if (userURL.indexOf("localhost")) {
+		userURL = "";
+	}
 	var url = "https://www.funcaptcha.co/wp-fc-register/?url=" + userURL;
 	var winpops=window.open(url,"","width=400,height=450")
 }
 </script>
 <h2 class="nav-tab-wrapper">
-	<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-page'>
+	<form class="form-css" action='<?php echo(htmlentities($_SERVER['PHP_SELF']).'?'.htmlentities($_SERVER['QUERY_STRING'])); ?>' method='POST' id='funcaptcha-page'>
 		<input type='submit' class="nav-btn nav-tab <?php echo ( $_POST['funcaptcha-page'] == 'Settings' ) ? 'nav-tab-active' : ''; ?>" name='funcaptcha-page' value='Settings' />
 		<input type='submit' class="nav-btn nav-tab <?php echo ( $_POST['funcaptcha-page'] == 'Activate' ) ? 'nav-tab-active' : ''; ?>" name='funcaptcha-page' value='Activate' />
 	</form>
@@ -22,7 +25,7 @@ function openpopup(popurl){
 	<div class='funcaptcha-box'>
 		<div class='inside'>
 			<h2 class="settings-title">Activate</h2>
-			<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-settings'>
+			<form class="form-css" action='<?php echo(htmlentities($_SERVER['PHP_SELF']).'?'.htmlentities($_SERVER['QUERY_STRING'])); ?>' method='POST' id='funcaptcha-settings'>
 				<?php if (funcaptcha_is_key_missing()) { ?>
 					<p style="color:red">To enable this plugin, you need to supply access keys. <a href="http://www.funcaptcha.co/register" target="_blank">Create your account at our website</a>. Note: If you have already set up FunCaptcha on another WordPress site, you already have an account, and can easily add this site to that account. <a href="https://funcaptcha.co/faqs/#multWordpress" target='_blank'>Learn how to add more sites.</a></p>
 					<a href="javascript:openpopup()"><button type='button' class='button-primary'>Register at FunCaptcha.co</button></a>

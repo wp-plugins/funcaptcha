@@ -4,7 +4,7 @@
 ?>
 <style type="text/css">.nav-btn{background-color:white;cursor:hand;cursor:pointer}.nav-btn:hover{color:#d54e21}</style>
 <h2 class="nav-tab-wrapper">
-	<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-page'>
+	<form class="form-css" action='<?php echo(htmlentities($_SERVER['PHP_SELF']).'?'.htmlentities($_SERVER['QUERY_STRING'])); ?>' method='POST' id='funcaptcha-page'>
 		<input type='submit' class="nav-btn nav-tab <?php echo ( $_POST['funcaptcha-page'] == 'Settings' ) ? 'nav-tab-active' : ''; ?>" name='funcaptcha-page' value='Settings' />
 		<input type='submit' class="nav-btn nav-tab <?php echo ( $_POST['funcaptcha-page'] == 'Activate' ) ? 'nav-tab-active' : ''; ?>" name='funcaptcha-page' value='Activate' />
 	</form>
@@ -13,7 +13,7 @@
 	<div class='funcaptcha-box'>
 		<div class='inside'>
 			<h2 class="settings-title">Settings</h2>
-			<form class="form-css" action='<?php echo($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']); ?>' method='POST' id='funcaptcha-settings'>
+			<form class="form-css" action='<?php echo(htmlentities($_SERVER['PHP_SELF']).'?'.htmlentities($_SERVER['QUERY_STRING'])); ?>' method='POST' id='funcaptcha-settings'>
 				<?php if (funcaptcha_is_key_missing()) { ?>
 					<p style="color:red">To activate this plugin, you need to supply access keys. You can do that on the <a href='<?php echo "plugins.php?page=" . PLUGIN_BASENAME?>'>activate tab</a>.</red><p>
 				<?php }
