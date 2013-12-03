@@ -5,7 +5,7 @@ Requires at least: 2.8.0
 Tested up to: 3.7.1
 Stable tag: 0.5.0
 
-Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7 and bbPress.
+Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7, bbPress.
 
 == Description ==
 
