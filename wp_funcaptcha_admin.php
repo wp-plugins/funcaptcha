@@ -30,6 +30,12 @@
 					<p><input type='checkbox' name='funcaptcha[comment_form]' value='1' <?php echo ( $funcaptcha_options['comment_form'] ) ? 'checked' : ''; ?> /> Comments</p>
 					<input type="hidden" name="funcaptcha[login_form]" value="0" />
 					<p><input type='checkbox' name='funcaptcha[login_form]' value='1' <?php echo ( $funcaptcha_options['login_form'] ) ? 'checked' : ''; ?> /> Login</p>
+					<?php if (BBPRESS_INSTALLED) { ?>
+						<input type="hidden" name="funcaptcha[bbpress_topic]" value="0" />
+						<p><input type='checkbox' name='funcaptcha[bbpress_topic]' value='1' <?php echo ( $funcaptcha_options['bbpress_topic'] ) ? 'checked' : ''; ?> /> bbPress Topics</p>
+						<input type="hidden" name="funcaptcha[bbpress_reply]" value="0" />
+						<p><input type='checkbox' name='funcaptcha[bbpress_reply]' value='1' <?php echo ( $funcaptcha_options['bbpress_reply'] ) ? 'checked' : ''; ?> /> bbPress Replies</p>
+					<?php } ?>
 				</fieldset>
 				<fieldset>
 					<label>Hide from logged in users?</label>

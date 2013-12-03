@@ -31,7 +31,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wp";
-	protected $funcaptcha_plugin_version = "0.4.4";
+	protected $funcaptcha_plugin_version = "0.5.0";
 	protected $funcaptcha_security_level = 0;
 	protected $session_token;
 

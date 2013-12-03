@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.4.4
+ * @version 0.5.0
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: http://funcaptcha.co/
-Version: 0.4.4
+Version: 0.5.0
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.4.4');
+define('FUNCAPTCHA_VERSION', '0.5.0');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 if ( ! defined( 'PLUGIN_PATH' ) ) {
@@ -98,8 +98,19 @@ function funcaptcha_init() {
            funcaptcha_register_gf_actions();
         }
 
-    }
 
+        if(BBPRESS_INSTALLED) {
+            if ($funcaptcha_options['bbpress_topic']) {
+                add_action('bbp_theme_after_topic_form_content', 'funcaptcha_bbpress_form');
+                add_action('bbp_new_topic_pre_extras', 'funcaptcha_bbpress_validate');
+            }
+            if ($funcaptcha_options['bbpress_reply']) {
+                add_action('bbp_theme_after_reply_form_content', 'funcaptcha_bbpress_form');
+                add_action('bbp_new_reply_pre_extras', 'funcaptcha_bbpress_validate');
+            }           
+        }
+
+    }
 }
 
 /**
@@ -133,6 +144,7 @@ function funcaptcha_addons() {
     define('CF7_INSTALLED', is_plugin_active('contact-form-7/wp-contact-form-7.php'));
     define('BP_INSTALLED', is_plugin_active('buddypress/bp-loader.php'));
     define('GF_DETECTED', is_plugin_active('gravityforms/gravityforms.php'));    
+    define('BBPRESS_INSTALLED', is_plugin_active('bbpress/bbpress.php'));
 }
 
 if (function_exists('bp_is_register_page')) { 
@@ -435,6 +447,8 @@ function funcaptcha_set_options($options) {
                                 'register_form',
                                 'password_form',
                                 'comment_form',
+                                'bbpress_topic',
+                                'bbpress_reply',
                                 'login_form',
                                 'hide_users',
                                 'hide_admins',
@@ -473,6 +487,8 @@ function funcaptcha_get_settings() {
         'register_form' => true,
         'password_form' => true,
         'comment_form' => true,
+        'bbpress_topic' => false,
+        'bbpress_reply' => false,
         'login_form'    => false,
         'hide_users' => false,
         'hide_admins' => false,
@@ -537,6 +553,8 @@ function funcaptcha_get_settings_post() {
                                 'register_form',
                                 'password_form',
                                 'comment_form',
+                                'bbpress_topic',
+                                'bbpress_reply',
                                 'login_form',
                                 'hide_users',
                                 'hide_admins',
@@ -560,6 +578,8 @@ function funcaptcha_get_settings_post() {
         'register_form' => '',
         'password_form' => '',
         'comment_form' => '',
+        'bbpress_topic' => '',
+        'bbpress_reply' => '',
         'hide_users' => '',
         'hide_admins' => '',
         'security_level' => 0,
@@ -777,6 +797,48 @@ function funcaptcha_register_form_bp() {
     echo "<div id='funcaptcha-wrapper' style='" . $style . "'>" . $html .  "</div>";
     echo funcaptcha_resize_mobile();
     return true;
+}
+
+
+/**
+ * Shows and generates captcha for bbPress
+*/
+function funcaptcha_bbpress_form()
+{
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+    
+    $funcaptcha = funcaptcha_API();
+    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    switch ($options['align']) {
+        case "left" :
+            $style = "text-align: left;";
+        break; 
+        case "right" :
+            $style = "text-align: right;";
+        break;
+        case "center" :
+            $style = "text-align: center;";
+        break;
+    }
+    echo "<div id='funcaptcha-wrapper' style='" . $style . "'>" . $html .  "</div>";
+    echo funcaptcha_resize_mobile();
+}
+
+
+/**
+ * Validates bbpress topics and replies
+*/
+function funcaptcha_bbpress_validate()
+{
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+
+    if ( $funcaptcha->checkResult($options['private_key']) ) {
+        return( $results );
+    } else {
+        bbp_add_error('funcaptcha-wrong', htmlentities($options['error_message']));
+    }
 }
 
 
