@@ -35,7 +35,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_security_level = 0;
 	protected $session_token;
 
-	protected $version = '0.0.5';
+	protected $version = '0.5.1';
 
 	/**
 	 * Constructor

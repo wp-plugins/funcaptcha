@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 0.5.0
+ * @version 0.5.1
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: http://funcaptcha.co/
-Version: 0.5.0
+Version: 0.5.1
 */
 
 
-define('FUNCAPTCHA_VERSION', '0.5.0');
+define('FUNCAPTCHA_VERSION', '0.5.1');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 if ( ! defined( 'PLUGIN_PATH' ) ) {
@@ -56,7 +56,7 @@ function funcaptcha_init() {
         //if comment_form is set in the options, attach to the comment hooks
         if( $funcaptcha_options['comment_form'] ) {
             add_action('comment_form', 'funcaptcha_comment_form');
-            add_filter('preprocess_comment', 'funcaptcha_comment_post', 10, 1);
+            add_filter('preprocess_comment', 'funcaptcha_comment_post', 9, 1);
         }
         
         // If register_form is set in the options, attach to the register hooks
@@ -74,13 +74,13 @@ function funcaptcha_init() {
                     add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
                 }
                 add_action('register_form', 'funcaptcha_register_form');
-                add_action('register_post', 'funcaptcha_register_post', 10, 3);
+                add_action('register_post', 'funcaptcha_register_post', 9, 3);
             }
         }
 
         if( $funcaptcha_options['login_form'] ) {
             add_action('login_form', 'funcaptcha_login_form');
-            add_filter('authenticate', 'funcaptcha_login_post', 10, 3);
+            add_filter('authenticate', 'funcaptcha_login_post', 9, 3);
         }
 
         // If password_form is set in the options, attach to the lost password hooks    
