@@ -48,6 +48,14 @@
 					<p><input type='checkbox' name='funcaptcha[hide_admins]' value='1' <?php echo ( $funcaptcha_options['hide_admins'] ) ? 'checked' : ''; ?> /> Yes</p>
 				</fieldset>
 				<fieldset>
+					<label>Lightbox mode:</label>
+					<p>Lightbox mode will show FunCaptcha once the user submits your form, rather than on the page. Inline mode will show FunCaptcha on your page as the user completes your form. For more information, see our <a href="http://www.funcaptcha.co/faqs/" target="_blank">FAQ</a>.</p>
+					<select name="funcaptcha[lightbox_mode]" value="lightbox_mode">
+						<option value="1" <?php if ($funcaptcha_options['lightbox_mode'] == 1) { echo 'selected="selected"'; } else { ''; };?>>Lightbox</option>
+						<option value="0" <?php if ($funcaptcha_options['lightbox_mode'] == 0) { echo 'selected="selected"'; } else { ''; };?>>Inline</option>
+					</select>
+				</fieldset>
+				<fieldset>
 					<label>Security level:</label>
 					<p>If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. For more information, see our <a href="http://www.funcaptcha.co/faqs/" target="_blank">FAQ</a>.</p>
 					<select name="funcaptcha[security_level]" value="security_level">
@@ -62,7 +70,7 @@
 				</fieldset>
 				<fieldset>
 					<label>FunCaptcha alignment:</label>
-					<p>You can change the alignment of FunCaptcha on your page, this applies for all instances of FunCaptcha.</p>
+					<p>You can change the alignment of FunCaptcha on your page, this applies for inline versions of FunCaptcha.</p>
 					<select name="funcaptcha[align]" value="align">
 						<option value="left" <?php if ($funcaptcha_options['align'] == 'left') { echo 'selected="selected"'; } else { ''; };?>>Left</option>
 						<option value="right" <?php if ($funcaptcha_options['align'] == 'right') { echo 'selected="selected"'; } else { ''; };?>>Right</option>

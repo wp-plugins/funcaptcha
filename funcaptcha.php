@@ -3,7 +3,7 @@
  * FunCaptcha
  * PHP Integration Library
  *
- * @version 0.0.5
+ * @version 0.0.7
  *
  * Copyright (c) 2013 SwipeAds -- http://www.funcaptcha.co
  * AUTHOR:
@@ -31,11 +31,15 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wp";
-	protected $funcaptcha_plugin_version = "0.5.0";
+	protected $funcaptcha_plugin_version = "1.0.0";
 	protected $funcaptcha_security_level = 0;
+
+	protected $funcaptcha_lightbox_mode = FALSE;
+	protected $funcaptcha_lightbox_button_id = "";
+	protected $funcaptcha_lightbox_submit_javascript = "";
 	protected $session_token;
 
-	protected $version = '0.5.1';
+	protected $version = '0.0.7';
 
 	/**
 	 * Constructor
@@ -59,9 +63,10 @@ if ( ! class_exists('FUNCAPTCHA')):
 	 * Returns FunCaptcha HTML to display in form
 	 *
 	 * @param string $public_key - FunCaptcha public key
+	 * @param array $args - Additional information to pass to FunCaptcha servers
 	 * @return string
 	 */
-	public function getFunCaptcha($public_key)
+	public function getFunCaptcha($public_key, $args=null)
 	{
 
 		$this->funcaptcha_public_key = $public_key;
@@ -77,13 +82,17 @@ if ( ! class_exists('FUNCAPTCHA')):
 
 		//send your public key, your site name, the users ip and browser type.
 		$data = array(
-			'public_key'		=> $this->funcaptcha_public_key,
-			'site' 				=> $_SERVER["SERVER_NAME"],
-			'userip'	 		=> $_SERVER["REMOTE_ADDR"],
-			'userbrowser'		=> $_SERVER['HTTP_USER_AGENT'],
-			'api_type'			=> $this->funcaptcha_api_type,
-			'plugin_version'	=> $this->funcaptcha_plugin_version,
-			'security_level'	=> $this->funcaptcha_security_level
+			'public_key'			=> $this->funcaptcha_public_key,
+			'site' 					=> $_SERVER["SERVER_NAME"],
+			'userip'	 			=> $_SERVER["REMOTE_ADDR"],
+			'userbrowser'			=> $_SERVER['HTTP_USER_AGENT'],
+			'api_type'				=> $this->funcaptcha_api_type,
+			'plugin_version'		=> $this->funcaptcha_plugin_version,
+			'security_level'		=> $this->funcaptcha_security_level,
+			'lightbox'				=> $this->funcaptcha_lightbox_mode,
+			'lightbox_button_id'	=> $this->funcaptcha_lightbox_button_id,
+			'lightbox_submit_js'	=> $this->funcaptcha_lightbox_submit_javascript,
+			'args'					=> $args
 		);
 
 		//get session token.
@@ -116,7 +125,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 			$url.= $this->funcaptcha_host;
 			$url.= $this->funcaptcha_challenge_url;
 			$url.= "?cache=" . time();
-			return "<div id='FunCaptcha'></div><input type='hidden' id='FunCaptcha-Token' name='fc-token' value='" . $this->session_token . "'><script src='". $url ."' type='text/javascript' language='JavaScript'></script>";
+			return "<div id='FunCaptcha'></div><input type='hidden' id='FunCaptcha-Token' name='fc-token' value='" . $this->session_token . "'><script src='". $url ."' type='text/javascript' language='JavaScript'></script>".$session->noscript;
 		}
 		else
 		{
@@ -145,12 +154,33 @@ if ( ! class_exists('FUNCAPTCHA')):
 	}
 
 	/**
+	 * Set lightbox mode of FunCaptcha
+	 *
+	 *
+	 * See our website for more details on these options
+	 *
+	 * @param boolean $enable - Enable lightbox mode.
+	 * @param boolean $submit_button_id - ID of button to be used to display lightbox.
+	 * @param boolean $submit_javascript_function_name - Name of javascript function to call on lightbox FunCaptcha completion.
+	 * @return boolean
+	 */
+	public function setLightboxMode($enable, $submit_button_id=null, $submit_javascript_function_name=null) {
+		$this->funcaptcha_lightbox_mode = $enable;
+		$this->funcaptcha_lightbox_button_id = $submit_button_id;
+		$this->funcaptcha_lightbox_submit_javascript = $submit_javascript_function_name;
+		$this->msgLog("DEBUG", "Lightbox mode: '$this->funcaptcha_lightbox_mode'");
+		$this->msgLog("DEBUG", "Lightbox Button ID: '$this->funcaptcha_lightbox_button_id'");
+		$this->msgLog("DEBUG", "Lightbox JS Name: '$this->funcaptcha_lightbox_submit_javascript'");
+	}
+
+	/**
 	 * Verify if user has solved the FunCaptcha
 	 *
 	 * @param string $private_key - FunCaptcha private key
+	 * @param array $args - Additional information to pass to FunCaptcha servers
 	 * @return boolean
 	 */
-	public function checkResult($private_key) {
+	public function checkResult($private_key, $args=null) {
 		$this->funcaptcha_private_key = $private_key;
 
 		$this->msgLog("DEBUG", ("Session token to check: " . $_POST['fc-token']));
@@ -166,8 +196,10 @@ if ( ! class_exists('FUNCAPTCHA')):
 
 		if ($_POST['fc-token']) {
 			$data = array(
-				'private_key' => $this->funcaptcha_private_key,
-				'session_token' => $_POST['fc-token']
+				'private_key' 		=> $this->funcaptcha_private_key,
+				'session_token' 	=> $_POST['fc-token'],
+				'fc_rc_challenge' 	=> $_POST['fc_rc_challenge'],
+				'args'				=> $args
 			);
 			$result = $this->doPostReturnObject('/fc/v/', $data);
 		}

@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: captcha, antispam, comment, login, registration captcha, contact form 7 captcha, gravity forms captcha, buddypress CAPTCHA, spam blocking CAPTCHA, bbPress
 Requires at least: 2.8.0
 Tested up to: 3.7.1
-Stable tag: 0.5.1
+Stable tag: 1.0.0
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7, bbPress.
 
@@ -13,7 +13,7 @@ Spammers abuse your site, but users hate typing out twisty letters or ad phrases
 
 Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge CAPTCHA provided by reCAPTCHA.
 
-The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7 and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often. We also fully support showing FunCaptcha on bbPress topic creation and for replies.
+The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7 and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often. We also fully support showing FunCaptcha on bbPress topic creation and for replies. You can even automatically show FunCaptcha once your user submits the form, rather than displaying it on your page.
 
 Learn more, give feedback, and ask questions at our website. Our epic battle against bots doesn't have to be a headache. Let's fight while having some fun!
 
@@ -64,6 +64,9 @@ Yes. It is built on HTML5, with full support for mobiles. It works great with to
 = Is there audio accessibility? =
 Yes. We use the well-known “reCAPTCHA” service to provide an audio CAPTCHA for those who need it.
 
+= Does it work if Javascript is turned off? =
+Yes. We fallback to a text CAPTCHA if the user has Javascript disabled. FunCaptcha works on all platforms, devices and form factors - all the way back to IE6 being fully supported.
+
 = Are other CAPTCHAs more secure? =
 Unfortunately, all typed-in CAPTCHAs are now being solved by bots to some degree. Some newer CAPTCHA alternatives are actually much easier for bots to solve than before! Once these new alternatives become popular enough to be worthwhile for hackers to target, they will crumble. FunCaptcha will stay ahead of the curve, and clearly explain how we do it-- not resort to a black box of promises.
 
@@ -75,6 +78,9 @@ Most CAPTCHAs require the user to read and type in text. The text must be hard t
 
 = What is FunCaptcha? =
 FunCaptcha is a CAPTCHA that presents a mini-game that blocks the bots while giving your users a few moments of fun. It’s a real security solution, hardened by experts and automatically updated to provide the best protection. Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices. Visually impaired users can complete an audio challenge.
+
+= What is lightbox mode? =
+Lightbox mode will display FunCaptcha when the user clicks submit. This way FunCaptcha is shown in better context with the form, as a security verification method. This mode helps improve your users conversions as well as better fitting in with your sites custom theme. We recommend this mode being left on. If you have any issues with FunCaptcha not working, first try turning this off.
 
 = FunCaptcha does not appear / I am using JetPack for comments =
 We have noticed a few of our users are using the JetPack plugin, which currently does not support showing a CAPTCHA by third parties. You can disable the JetPack comment addon from your dashboard and it will work fine. There may be other plugins that cause our CAPTCHA to not appear. We recommend you note down any type of comment or registration plugins before you contact us to help us better assist you. If you have any other CAPTCHA plugins, please disable those as well. Our CAPTCHA will detect if you are using JetPack and warn you of the conflicting.
@@ -135,6 +141,10 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 4. Admin Page
 
 == Changelog ==
+
+= 1.0.0 =
+* Lightbox mode.
+* FunCaptcha can still validate users even with javascript turned off.
 
 = 0.5.1 =
 * Increased priority of FunCaptcha for error processing, prevents conflict with other plugins that check to see if form errors exist.
