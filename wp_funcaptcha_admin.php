@@ -19,6 +19,16 @@
 				<?php }
 					check_for_jetpack();
 				?>
+				<fieldset>
+					<label>FunCaptcha theme:</label>
+					<p>This will change the appearance of FunCaptcha (see <a href="http://www.funcaptcha.co/themes/" target="_blank">here</a> for what they look like):</p>
+					<select name="funcaptcha[theme]" value="theme">
+						<option value="0" <?php if ($funcaptcha_options['theme'] == 0) { echo 'selected="selected"'; } else { ''; };?>>Standard</option>
+						<option value="1" <?php if ($funcaptcha_options['theme'] == 1) { echo 'selected="selected"'; } else { ''; };?>>Slate Blue</option>
+						<option value="3" <?php if ($funcaptcha_options['theme'] == 3) { echo 'selected="selected"'; } else { ''; };?>>White</option>
+						<option value="4" <?php if ($funcaptcha_options['theme'] == 4) { echo 'selected="selected"'; } else { ''; };?>>Black</option>
+					</select>
+				</fieldset>
 				<p>Select where you'd like the FunCaptcha to appear.</p>
 				<fieldset>
 					<label>Show FunCaptcha on:</label>

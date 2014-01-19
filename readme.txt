@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: captcha, antispam, comment, login, registration captcha, contact form 7 captcha, gravity forms captcha, buddypress CAPTCHA, spam blocking CAPTCHA, bbPress
 Requires at least: 2.8.0
 Tested up to: 3.7.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7, bbPress.
 
@@ -13,7 +13,7 @@ Spammers abuse your site, but users hate typing out twisty letters or ad phrases
 
 Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge CAPTCHA provided by reCAPTCHA.
 
-The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7 and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often. We also fully support showing FunCaptcha on bbPress topic creation and for replies. You can even automatically show FunCaptcha once your user submits the form, rather than displaying it on your page.
+The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7 and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often. We also fully support showing FunCaptcha on bbPress topic creation and for replies. You can automatically show FunCaptcha once your user submits the form, rather than displaying it on your page. Choose from several FunCaptcha themes to best match your websites color scheme.
 
 Learn more, give feedback, and ask questions at our website. Our epic battle against bots doesn't have to be a headache. Let's fight while having some fun!
 
@@ -141,6 +141,10 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 4. Admin Page
 
 == Changelog ==
+
+= 1.1.0 =
+* Theme selection, you can now change the visual appearance of FunCaptcha. See the selection at [our website](https://www.funcaptcha.co/themes/).
+* Support for versions of PHP without CURL or JSON support.
 
 = 1.0.0 =
 * Lightbox mode.
