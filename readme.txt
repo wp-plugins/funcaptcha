@@ -142,6 +142,9 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 
 == Changelog ==
 
+= 1.1.1 =
+* Bug fix for multisites using Buddypress
+
 = 1.1.0 =
 * Theme selection, you can now change the visual appearance of FunCaptcha. See the selection at [our website](https://www.funcaptcha.co/themes/).
 * Support for versions of PHP without CURL or JSON support.

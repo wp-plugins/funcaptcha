@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 1.1.0
+ * @version 1.1.1
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,11 +9,11 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: http://funcaptcha.co/
-Version: 1.1.0
+Version: 1.1.1
 */
 
 
-define('FUNCAPTCHA_VERSION', '1.1.0');
+define('FUNCAPTCHA_VERSION', '1.1.1');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 if ( ! defined( 'PLUGIN_PATH' ) ) {
@@ -64,7 +64,7 @@ function funcaptcha_init() {
             if (is_multisite()) {
                 if (BP_INSTALLED) {
                     add_action('bp_before_registration_submit_buttons', 'funcaptcha_register_form_bp');
-                    add_action('bp_signup_validate', 'funcaptcha_register_post_wpmu');
+                    add_action('bp_signup_validate', 'funcaptcha_register_post_bp');
                 }
                 add_action( 'signup_extra_fields', 'funcaptcha_register_form_wpmu' );
                 add_filter( 'wpmu_validate_user_signup', 'funcaptcha_register_post_wpmu' );
