@@ -3,7 +3,7 @@ Contributors: swipeads
 Tags: captcha, antispam, comment, login, registration captcha, contact form 7 captcha, gravity forms captcha, buddypress CAPTCHA, spam blocking CAPTCHA, bbPress
 Requires at least: 2.8.0
 Tested up to: 3.7.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7, bbPress.
 
