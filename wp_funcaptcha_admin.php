@@ -58,10 +58,10 @@
 					<p><input type='checkbox' name='funcaptcha[hide_admins]' value='1' <?php echo ( $funcaptcha_options['hide_admins'] ) ? 'checked' : ''; ?> /> Yes</p>
 				</fieldset>
 				<fieldset>
-					<label>Lightbox mode:</label>
-					<p>Lightbox mode will show FunCaptcha once the user submits your form, rather than on the page. Inline mode will show FunCaptcha on your page as the user completes your form. For more information, see our <a href="http://www.funcaptcha.co/faqs/" target="_blank">FAQ</a>.</p>
+					<label>Popup mode:</label>
+					<p>Popup mode will show FunCaptcha once the user submits your form, rather than on the page. Inline mode will show FunCaptcha on your page as the user completes your form. For more information, see our <a href="http://www.funcaptcha.co/faqs/" target="_blank">FAQ</a>.</p>
 					<select name="funcaptcha[lightbox_mode]" value="lightbox_mode">
-						<option value="1" <?php if ($funcaptcha_options['lightbox_mode'] == 1) { echo 'selected="selected"'; } else { ''; };?>>Lightbox</option>
+						<option value="1" <?php if ($funcaptcha_options['lightbox_mode'] == 1) { echo 'selected="selected"'; } else { ''; };?>>Popup</option>
 						<option value="0" <?php if ($funcaptcha_options['lightbox_mode'] == 0) { echo 'selected="selected"'; } else { ''; };?>>Inline</option>
 					</select>
 				</fieldset>

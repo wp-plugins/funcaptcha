@@ -821,6 +821,11 @@ function funcaptcha_bbpress_form()
 {
     $funcaptcha = funcaptcha_API();
     $options = funcaptcha_get_settings();
+
+    // Do not show if the user is logged and it is not enabled for logged in users
+    if ((current_user_can('manage_options') && $options['hide_admins'] == 1)) {
+        return;
+    }
     
     $funcaptcha = funcaptcha_API();
     $html = $funcaptcha->getFunCaptcha($options['public_key']);
@@ -848,8 +853,13 @@ function funcaptcha_bbpress_validate()
     $funcaptcha = funcaptcha_API();
     $options = funcaptcha_get_settings();
 
+    // Do not show if the user is logged and it is not enabled for logged in users
+    if ((current_user_can('manage_options') && $options['hide_admins'] == 1)) {
+        return;
+    }
+
     if ( $funcaptcha->checkResult($options['private_key']) ) {
-        return( $results );
+        return;
     } else {
         bbp_add_error('funcaptcha-wrong', htmlentities($options['error_message']));
     }
@@ -866,6 +876,11 @@ function funcaptcha_bbpress_validate()
 function funcaptcha_register_post_wpmu($results) {
     $funcaptcha = funcaptcha_API();
     $options = funcaptcha_get_settings();
+
+    // Do not show if the user is logged and it is not enabled for logged in users
+    if ((current_user_can('manage_options') && $options['hide_admins'] == 1)) {
+        return $results;
+    }
     
     if ( $funcaptcha->checkResult($options['private_key']) ) {
         return( $results );
