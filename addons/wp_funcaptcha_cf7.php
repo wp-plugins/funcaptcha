@@ -1,8 +1,7 @@
 <?php
-
 /**
-* setup actions for contact form 7
-*
+* setup actions for contact form 7 
+**
 * @return null
 */
 function funcaptcha_register_cf7_actions() {
@@ -14,6 +13,11 @@ function funcaptcha_register_cf7_actions() {
 	
 	// Register the funcaptcha CF7 tag pane generator
 	add_action('admin_init', 'funcaptchacf7_tag_generator');
+
+	wp_enqueue_script( 'ajax_reload',
+        PLUGIN_PATH . '/funcaptcha/addons/ajax_reload.js',
+        array( 'jquery', 'jquery-form' )
+    );
 }
 
 /**

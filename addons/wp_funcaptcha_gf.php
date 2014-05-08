@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Registers all the actions and filters necessary to integrate FunCaptcha with GF
+ * Registers all the actions and filters necessary to integrate FunCaptcha with GF.
  */
 function funcaptcha_register_gf_actions() {
 	add_filter('gform_add_field_buttons', 'funcaptcha_gf_add_button');
@@ -9,7 +8,6 @@ function funcaptcha_register_gf_actions() {
 	add_filter('gform_field_validation', 'funcaptcha_gf_validate', 10, 4);
 	add_filter("gform_field_input", "funcaptcha_gf_field", 10, 5);
 }
-
 
 /**
  * Shows the FunCaptcha
