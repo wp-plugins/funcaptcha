@@ -15,7 +15,7 @@ function funcaptcha_register_cf7_actions() {
 	add_action('admin_init', 'funcaptchacf7_tag_generator');
 
 	wp_enqueue_script( 'ajax_reload',
-        PLUGIN_PATH . '/addons/ajax_reload.js',
+        plugin_dir_url() . '/funcaptcha/addons/ajax_reload.js',
         array( 'jquery', 'jquery-form' )
     );
 }
