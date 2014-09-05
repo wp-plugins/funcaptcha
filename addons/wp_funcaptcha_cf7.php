@@ -1,8 +1,7 @@
 <?php
-
 /**
-* setup actions for contact form 7
-*
+* setup actions for contact form 7 
+**
 * @return null
 */
 function funcaptcha_register_cf7_actions() {
