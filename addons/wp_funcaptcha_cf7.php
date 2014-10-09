@@ -70,7 +70,7 @@ function funcaptchacf7_tag_generator() {
 *
 * @return null
 */
-function funcaptchacf7_tag_pane(&$contact_form) {
+function funcaptchacf7_tag_pane($contact_form) {
 	?>
 	<div id="funcaptchacf7-tag-pane" class="hidden">
 		<form action="">
