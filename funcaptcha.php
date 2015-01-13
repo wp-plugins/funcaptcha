@@ -3,7 +3,7 @@
  * FunCaptcha
  * PHP Integration Library
  *
- * @version 1.0.0
+ * @version 1.1.0
  *
  * Copyright (c) 2013 SwipeAds -- http://www.funcaptcha.co
  * AUTHOR:
@@ -31,7 +31,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_challenge_url = '';
 	protected $funcaptcha_debug = FALSE;
 	protected $funcaptcha_api_type = "wordpress";
-	protected $funcaptcha_plugin_version = "1.2.1";
+	protected $funcaptcha_plugin_version = "1.2.2";
 	protected $funcaptcha_security_level = 0;
 	protected $funcaptcha_lightbox_mode = FALSE;
 	protected $funcaptcha_lightbox_button_id = "";
@@ -40,7 +40,7 @@ if ( ! class_exists('FUNCAPTCHA')):
 	protected $funcaptcha_theme = 0;
 	protected $funcaptcha_proxy;
 	protected $funcaptcha_json_path = "json.php";
-	protected $version = '1.0.0';
+	protected $version = '1.1.0';
 
 	/**
 	 * Constructor
@@ -131,14 +131,26 @@ if ( ! class_exists('FUNCAPTCHA')):
 			$url.= $this->funcaptcha_host;
 			$url.= $this->funcaptcha_challenge_url;
 			$url.= "?cache=" . time();
-			return "<div id='FunCaptcha'></div><input type='hidden' id='FunCaptcha-Token' name='fc-token' value='" . $this->session_token . "'><script src='". $url ."' type='text/javascript' language='JavaScript'></script>".$session->noscript;
+			$html = "<div id='FunCaptcha'></div><input type='hidden' id='FunCaptcha-Token' name='fc-token' value='" . $this->session_token . "'><script src='". $url ."' type='text/javascript' language='JavaScript'></script>".$session->noscript;
+			return array(
+				"html" 			=> $html,
+				"server_html"	=> isset($session->server_html) ? $server_html : "",
+				"script_url"	=> $url,
+				"session_token" => $this->session_token,
+				"api_server" 	=> "https://" . $this->funcaptcha_host,
+				"no_script" 	=> $session->noscript
+			);
 		}
 		else
 		{
 			//if failed to connect, display helpful message.
 			$style = "padding: 10px; border: 1px solid #b1abb2; background: #f1f1f1; color: #000000;";
 			$message = "The CAPTCHA cannot be displayed. This may be a configuration or server problem. You may not be able to continue. Please visit our <a href='http://funcaptcha.co/status' target='_blank'>status page</a> for more information or to contact us.";
-			echo "<p style=\"$style\">$message</p>\n";
+			$html = "<p style=\"$style\">$message</p>\n";
+			return array(
+				"html" 			=> $html,
+				"api_server" 	=> "https://" . $this->funcaptcha_host,
+			);
 		}
 	}
 
