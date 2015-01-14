@@ -15,6 +15,7 @@ function funcaptcha_register_gf_actions() {
 function funcaptcha_gf_field($input, $field, $value, $lead_id, $form_id) {
 
 	if ($field['type'] == 'FunCaptcha'){
+		//support for freshing FC
 		$input .= "<script>var element = document.getElementById('FunCaptcha');if(element){element.innerHTML = '';};</script>";
 		$input .= funcaptcha_get_fc_html();
 	}

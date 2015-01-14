@@ -51,6 +51,7 @@ function funcaptchacf7_validate($errors) {
     // refresh FC on ajax checkup.
     $funcaptcha = funcaptcha_API();
     $options = funcaptcha_get_settings();
+    //refresh fc support
     $fc_arr = $funcaptcha->getFunCaptcha($options['public_key']);
     $script .= "<script>";
     $script .= "var fc_div = document.getElementById('FunCaptcha');if(fc_div){fc_div.innerHTML = '';};";
