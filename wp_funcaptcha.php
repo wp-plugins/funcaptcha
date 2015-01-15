@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 1.2.1
+ * @version 1.2.4
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,9 +9,9 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: http://funcaptcha.co/
-Version: 1.2.1
+Version: 1.2.4
 */
-define('FUNCAPTCHA_VERSION', '1.2.1');
+define('FUNCAPTCHA_VERSION', '1.2.4');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 if ( ! defined( 'PLUGIN_PATH' ) ) {
@@ -670,7 +670,7 @@ function funcaptcha_comment_form() {
     }
 
     $funcaptcha = funcaptcha_API();
-    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    $html = funcaptcha_get_fc_html();
     
     switch ($options['align']) {
         case "left" :
@@ -734,7 +734,7 @@ function funcaptcha_register_form() {
     $options = funcaptcha_get_settings();
     
     $funcaptcha = funcaptcha_API();
-    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    $html = funcaptcha_get_fc_html();
     switch ($options['align']) {
         case "left" :
             $style = "text-align: left;";
@@ -761,7 +761,7 @@ function funcaptcha_register_form_wpmu($errors) {
     $funcaptcha = funcaptcha_API();
     $options = funcaptcha_get_settings();
     $error = $errors->get_error_message('funcaptcha_incorrect');
-    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    $html = funcaptcha_get_fc_html();
     switch ($options['align']) {
         case "left" :
             $style = "text-align: left;";
@@ -794,7 +794,7 @@ function funcaptcha_register_form_bp() {
     $options = funcaptcha_get_settings();
     
     $funcaptcha = funcaptcha_API();
-    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    $html = funcaptcha_get_fc_html();
     switch ($options['align']) {
         case "left" :
             $style = "text-align: left;";
@@ -826,7 +826,7 @@ function funcaptcha_bbpress_form()
     }
     
     $funcaptcha = funcaptcha_API();
-    $html = $funcaptcha->getFunCaptcha($options['public_key']);
+    $html = funcaptcha_get_fc_html();
     switch ($options['align']) {
         case "left" :
             $style = "text-align: left;";
@@ -1057,4 +1057,17 @@ function check_for_jetpack() {
         }
     }
 }
+
+
+/**
+* get FunCaptcha HTML
+*
+*/
+function funcaptcha_get_fc_html() {
+    $funcaptcha = funcaptcha_API();
+    $options = funcaptcha_get_settings();
+    $fc_arr = $funcaptcha->getFunCaptcha($options['public_key']);
+    return $fc_arr["html"];
+}
+
 

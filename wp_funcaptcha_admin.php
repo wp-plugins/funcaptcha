@@ -57,14 +57,16 @@
 					<input type="hidden" name="funcaptcha[hide_admins]" value="0" />
 					<p><input type='checkbox' name='funcaptcha[hide_admins]' value='1' <?php echo ( $funcaptcha_options['hide_admins'] ) ? 'checked' : ''; ?> /> Yes</p>
 				</fieldset>
-				<fieldset>
-					<label>Popup mode:</label>
-					<p>Popup mode will show FunCaptcha once the user submits your form, rather than on the page. Inline mode will show FunCaptcha on your page as the user completes your form. For more information, see our <a href="http://www.funcaptcha.co/faqs/" target="_blank">FAQ</a>.</p>
-					<select name="funcaptcha[lightbox_mode]" value="lightbox_mode">
-						<option value="1" <?php if ($funcaptcha_options['lightbox_mode'] == 1) { echo 'selected="selected"'; } else { ''; };?>>Popup</option>
-						<option value="0" <?php if ($funcaptcha_options['lightbox_mode'] == 0) { echo 'selected="selected"'; } else { ''; };?>>Inline</option>
-					</select>
-				</fieldset>
+				<?php if ($funcaptcha_options['lightbox_mode'] == 1) { ?>
+					<fieldset>
+						<label>Popup mode:</label>
+						<p><span style="color:red;">We recommend you disable this mode as it is being depreciated.</span> Popup mode will show FunCaptcha once the user submits your form, rather than on the page. Inline mode will show FunCaptcha on your page as the user completes your form. For more information, see our <a href="http://www.funcaptcha.co/faqs/" target="_blank">FAQ</a>.</p>
+						<select name="funcaptcha[lightbox_mode]" value="lightbox_mode">
+							<option value="1" <?php if ($funcaptcha_options['lightbox_mode'] == 1) { echo 'selected="selected"'; } else { ''; };?>>Popup</option>
+							<option value="0" <?php if ($funcaptcha_options['lightbox_mode'] == 0) { echo 'selected="selected"'; } else { ''; };?>>Inline</option>
+						</select>
+					</fieldset>
+				<?php } ?>
 				<fieldset>
 					<label>Security level:</label>
 					<p>If you choose Automatic, security starts at the lowest level, and rises and falls automatically, adjusted by FunCaptcha's monitoring system. The Enhanced level has more challenges to solve, but is very hard for spammer programs to get past. For more information, see our <a href="http://www.funcaptcha.co/faqs/" target="_blank">FAQ</a>.</p>

@@ -2,8 +2,8 @@
 Contributors: swipeads
 Tags: captcha, antispam, comment, login, registration captcha, contact form 7 captcha, gravity forms captcha, buddypress CAPTCHA, spam blocking CAPTCHA, bbPress
 Requires at least: 2.8.0
-Tested up to: 4.0
-Stable tag: 1.2.1
+Tested up to: 4.1
+Stable tag: 1.2.4
 
 Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7, bbPress.
 
@@ -11,7 +11,7 @@ Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on e
 
 Spammers abuse your site, but users hate typing out twisty letters or ad phrases (aka CAPTCHA and reCAPTCHA). Automated spam filters make mistakes and require constant checking. FunCaptcha presents a mini-game CAPTCHA that blocks the bots while giving your users a few moments of fun. It's a real security solution hardened by experts and automatically updated to provide the best protection. Try [a demo](http://www.funcaptcha.co/) on our site!
 
-Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge CAPTCHA provided by reCAPTCHA.
+Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge CAPTCHA.
 
 The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7 and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often. We also fully support showing FunCaptcha on bbPress topic creation and for replies. You can automatically show FunCaptcha once your user submits the form, rather than displaying it on your page. Choose from several FunCaptcha themes to best match your websites color scheme.
 
@@ -141,6 +141,18 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 4. Admin Page
 
 == Changelog ==
+
+= 1.2.4 =
+• Branding update
+
+= 1.2.3 =
+• Gravity Forms cache fix
+
+= 1.2.2 =
+* Fixed a bug with Gravity Forms not refreshing correctly
+* Tested support for Wordpress 4.1
+* Depreciating Popup/Lightbox mode, we recommend you disable this mode.
+* Added new FunCaptcha Logo & colour scheme
 
 = 1.2.1 =
 * Support for latest Contact Form 7 changes
