@@ -1,7 +1,7 @@
 <?php
 /**
  * @package FunCaptcha
- * @version 1.2.4
+ * @version 1.3.0
  */
 /*
 Plugin Name: FunCaptcha
@@ -9,9 +9,9 @@ Plugin URI:  http://wordpress.org/extend/plugins/funcaptcha/
 Description: Stop spammers with a fun, fast mini-game! FunCaptcha is free, and works on every desktop and mobile device.
 Author: SwipeAds
 Author URI: http://funcaptcha.co/
-Version: 1.2.4
+Version: 1.3.0
 */
-define('FUNCAPTCHA_VERSION', '1.2.4');
+define('FUNCAPTCHA_VERSION', '1.3.0');
 define('PLUGIN_BASENAME', plugin_basename(__FILE__));
 define('FUNCAPTCHA_SETTINGS_URL', 'funcaptcha');
 if ( ! defined( 'PLUGIN_PATH' ) ) {
@@ -20,6 +20,7 @@ if ( ! defined( 'PLUGIN_PATH' ) ) {
 require_once(PLUGIN_PATH . "/funcaptcha.php");
 require_once(PLUGIN_PATH . "/addons/wp_funcaptcha_cf7.php");
 require_once(PLUGIN_PATH . "/addons/wp_funcaptcha_gf.php");
+require_once(PLUGIN_PATH . "/addons/wp_funcaptcha_ninjaforms.php");
 
 add_filters_actions();
 
@@ -35,7 +36,7 @@ function add_filters_actions() {
     add_action( 'admin_menu', 'funcaptcha_add_admin_menu' );
     add_filter( 'plugin_action_links_' . PLUGIN_BASENAME, 'funcaptcha_register_plugin_action_links', 10, 1);
     add_filter('plugin_row_meta', 'funcaptcha_register_plugin_meta_links', 10, 2);
-    add_action('init', 'funcaptcha_init');
+    add_action('init', 'funcaptcha_init', 5);
 }
 
 /**
@@ -108,6 +109,9 @@ function funcaptcha_init() {
             }           
         }
 
+        if(NINJAFORMS_INSTALLED) {
+            ninja_funcaptcha_setup();
+        }
     }
 }
 
@@ -143,6 +147,7 @@ function funcaptcha_addons() {
     define('BP_INSTALLED', is_plugin_active('buddypress/bp-loader.php'));
     define('GF_DETECTED', is_plugin_active('gravityforms/gravityforms.php'));    
     define('BBPRESS_INSTALLED', is_plugin_active('bbpress/bbpress.php'));
+    define('NINJAFORMS_INSTALLED', is_plugin_active('ninja-forms/ninja-forms.php'));    
 }
 
 if (function_exists('bp_is_register_page')) { 
