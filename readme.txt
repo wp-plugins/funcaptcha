@@ -1,11 +1,11 @@
 === FunCaptcha - Anti-Spam CAPTCHA ===
 Contributors: swipeads
-Tags: captcha, antispam, comment, login, registration captcha, contact form 7 captcha, gravity forms captcha, buddypress CAPTCHA, Ninja Forms, bbPress
+Tags: captcha, antispam, comment, login, registration captcha, contact form 7 captcha, gravity forms captcha, buddypress CAPTCHA, spam blocking CAPTCHA, bbPress
 Requires at least: 2.8.0
 Tested up to: 4.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 
-Stop spam with a fun, fast CAPTCHA! FunCaptcha works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7, bbPress, NinjaForms.
+Stop spam with a fun, fast mini-game CAPTCHA! FunCaptcha is free, and works on every desktop and mobile device. For BuddyPress, Gravity Forms, CF7, bbPress.
 
 == Description ==
 
@@ -13,7 +13,7 @@ Spammers abuse your site, but users hate typing out twisty letters or ad phrases
 
 Users complete these little games faster than other CAPTCHAs, with fewer frustrating failures and no typing. They work on all browsers and mobile devices, using HTML5 with a fallback to Flash. Visually impaired users can complete an audio challenge CAPTCHA.
 
-The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7, Ninja Forms and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often. We also fully support showing FunCaptcha on bbPress topic creation and for replies. You can automatically show FunCaptcha once your user submits the form, rather than displaying it on your page. Choose from several FunCaptcha themes to best match your websites color scheme.
+The FunCaptcha widget works easily on registration and comment forms, as well as Contact Form 7 and Gravity Forms. You can keep your anti-spam solutions such as Akismet, though you won't need to check those filters as often. We also fully support showing FunCaptcha on bbPress topic creation and for replies. You can automatically show FunCaptcha once your user submits the form, rather than displaying it on your page. Choose from several FunCaptcha themes to best match your websites color scheme.
 
 Learn more, give feedback, and ask questions at our website. Our epic battle against bots doesn't have to be a headache. Let's fight while having some fun!
 
@@ -110,7 +110,7 @@ Our CAPTCHA can be installed in less than two minutes, the entire signup process
 We are rapidly updating and adding features to both our Wordpress plugin and our core technology platform, in future we will offer new ways for you to display the CAPTCHA to better match your website.
 
 = Can I reposition the CAPTCHA? =
-You can change how you'd like to align FunCaptcha in the settings to better match your websites layout. This works on your comment forms, lost password and registration forms, as well as Contact Form 7, BuddyPress, Ninja Forms and our Gravity Form addons. This setting will also align the submit button to match for the best user experience.
+You can change how you'd like to align FunCaptcha in the settings to better match your websites layout. This works on your comment forms, lost password and registration forms, as well as Contact Form 7, BuddyPress and our Gravity Form addons. This setting will also align the submit button to match for the best user experience.
 
 = What does 'security level' mean? =
 By default, FunCaptcha's security level is Automatic, and you don't need to do a thing. But here are some details if you want to know what's going on under the hood.
@@ -142,8 +142,11 @@ For a full list of frequently asked questions, please see our [FAQ page](http://
 
 == Changelog ==
 
+= 1.3.1 =
+• Fixed a bug with CF7 & GF with new code base
+
 = 1.3.0 =
-• Added NinjaForms support
+• NinjaForms support
 
 = 1.2.4 =
 • Branding update

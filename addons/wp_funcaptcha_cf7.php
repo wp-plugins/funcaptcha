@@ -30,10 +30,7 @@ function funcaptchacf7_register_shortcode() {
 * @return string outputs funcaptcha for the form
 */
 function funcaptchacf7_tag_handler($atts) {
-	$funcaptcha = funcaptcha_API();
-    $options = funcaptcha_get_settings();
-    
-    return $funcaptcha->getFunCaptcha($options['public_key']);
+    return funcaptcha_get_fc_html();
 }
 
 /**

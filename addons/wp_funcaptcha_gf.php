@@ -16,9 +16,7 @@ function funcaptcha_gf_field($input, $field, $value, $lead_id, $form_id) {
 
 	if ($field['type'] == 'FunCaptcha'){
 		if (!is_admin()) {
-			$funcaptcha = funcaptcha_API();
-			$options = funcaptcha_get_settings();
-			$input .= $funcaptcha->getFunCaptcha($options['public_key']);
+			$input .= funcaptcha_get_fc_html();
 		} else {
 			$input = $input . '<img src=' . plugins_url() . '/funcaptcha/images/funcaptcha_gf.png />';
 		}
