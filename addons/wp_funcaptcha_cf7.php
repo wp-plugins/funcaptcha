@@ -6,22 +6,13 @@
 */
 function funcaptcha_register_cf7_actions() {
     // Register the funcaptcha CF7 shortcode
-	funcaptchacf7_register_shortcode();
+	wpcf7_add_shortcode('funcaptcha', 'funcaptchacf7_tag_handler', true);
 	
 	// Register the funcaptcha CF7 validation function
-	add_filter('wpcf7_validate_funcaptcha', 'funcaptchacf7_validate', 10, 1);
+	add_filter('wpcf7_validate_funcaptcha', 'funcaptchacf7_validate', 10, 2);
 	
 	// Register the funcaptcha CF7 tag pane generator
 	add_action('admin_init', 'funcaptchacf7_tag_generator');
-}
-
-/**
-* setup [funcaptcha] tag
-*
-* @return null
-*/
-function funcaptchacf7_register_shortcode() {
-	wpcf7_add_shortcode('funcaptcha', 'funcaptchacf7_tag_handler');
 }
 
 /**
@@ -29,8 +20,17 @@ function funcaptchacf7_register_shortcode() {
 *
 * @return string outputs funcaptcha for the form
 */
-function funcaptchacf7_tag_handler($atts) {
-    return funcaptcha_get_fc_html();
+function funcaptchacf7_tag_handler($tag) {
+	$tag = new WPCF7_Shortcode($tag);
+	if( empty($tag->name))
+		return '';
+
+	$html = funcaptcha_get_fc_html();
+
+	$html .= '<span class="wpcf7-form-control-wrap ' . $tag->name  . '"> </span>';
+
+
+	return apply_filters('wpcf7_funcaptcha_html_output', $html);
 }
 
 /**
@@ -38,18 +38,19 @@ function funcaptchacf7_tag_handler($atts) {
 *
 * @return array
 */
-function funcaptchacf7_validate($errors) {
+function funcaptchacf7_validate($result, $tag) {
+	$tag = new WPCF7_Shortcode( $tag );
+	$name = $tag->name;
 
     $funcaptcha = funcaptcha_API();
     $options = funcaptcha_get_settings();
     
     if ( $funcaptcha->checkResult($options['private_key']) ) {
-		return $errors;
+		return $result;
     } else {
-		global $CF7_ERROR_MESSAGE;
-		$errors['valid'] = false;
-		$errors['reason']['your-message'] = __($options['error_message'], 'funcaptcha');
-		return $errors;
+		$result['valid'] = false;
+		$result['reason'] = array($name => $options['error_message']);
+		return $result;
     }
 }
 
